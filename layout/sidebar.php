@@ -30,30 +30,36 @@
                 </p>
                 </a>
                </li>
-               <!-- <li class="nav-item ">
-                <a href="javascript:void(0);" class="nav-link <?php echo isPageActive('absensi') ? 'active' : ''; ?>">
-                  <i class="nav-icon fas fa-portrait"></i>
+               <li class="nav-item ">
+                <a href="javascript:void(0);" class="nav-link <?php echo isPageActive('monitoring') ? 'active' : ''; ?>">
+                  <i class="nav-icon fas fa-tv"></i>
                   <p>
-                    Absensi
+                    Monitor
                     <i class="fas fa-angle-left right"></i>
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="?module=dataAbsensi" class="nav-link <?php echo isPageActive('dataItem') ? 'active' : ''; ?>">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Data Absensi</p>
+                    <a href="?module=dataNutrisi" class="nav-link <?php echo isPageActive('dataNutrisi') ? 'active' : ''; ?>">
+                      <i class="nav-icon fas fa-seedling"></i>
+                      <p>Data Nutrisi</p>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a href="?module=dataKaryawan" class="nav-link <?php echo isPageActive('dataItem') ? 'active' : ''; ?>">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Data Karyawan</p>
+                    <i class="nav-icon fas fa-thermometer-empty"></i>
+                      <p>Data Suhu</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="?module=dataKaryawan" class="nav-link <?php echo isPageActive('dataItem') ? 'active' : ''; ?>">
+                      <i class="nav-icon fas fa-vial "></i>
+                      <p>Data Ph</p>
                     </a>
                   </li>
                   </li>
                 </ul>
-            </li> -->
+            </li>
           <li class="nav-item">
               <a href="?module=User" class="nav-link <?php echo isPageActive('User') ? 'active' : ''; ?>">
               <i class="nav-icon fas fa-user"></i>

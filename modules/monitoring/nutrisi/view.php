@@ -5,19 +5,17 @@
           $alert =  $_GET['alert'];
           switchAlert($alert);
           }
-
-          $tgl = isset($_GET['tgl_awal']) ? $_GET['tgl_awal'] : date("Y-m-d");
 ?>
         <div class="row mb-2">
                   <div class="col-sm-6">
-                    <h1>Data Karyawan</h1>
+                    <h1>Monitoring Nutrisi Tanaman</h1>
                   </div>
                 </div>
               </div><!-- /.container-fluid -->
             </section>
 
 <?php
-  $query = "CALL tidak_hadir ('2023-07-03');";
+  $query = "SELECT * from is_users ORDER BY nama_user ASC";
   $execQuery = mysqli_query($conn, $query)
                or die('Ada kesalahan pada query tampil data user: '.mysqli_error($conn));;
 ?>
@@ -28,23 +26,14 @@
         <div class="row">
           <div class="col-12">
             <div class="card">
-              <div class="card-header">
-                    <div class="row">
-                        <div class="col-3">
-                            <label>Tanggal</label>
-                        </div>
-                    </div>
-                    <form action="modules/master/absentelat/proses.php?act=caritanggal" method="post">
-                        <div class="row mt-2">
-                                <div class="col-3">
-                                    <input type="date" name="tanggal_awal" placeholder="tanggal_awal" class="form-control" required>
-                                </div>
-                                <div class="col-3 mt-1">
-                                    <button type="submit" class="btn btn-primary btn-sm" name="caritanggal"><i class = "fas fa-search"></i></button>
-                                </div>
-                        </div>
-                    </form>
-                    
+              <div class="card-header d-md-flex justify-content-md-end">
+                      <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#myModal">
+                          <i class="fa fa-plus-square"></i> Tabel Nutrisi
+                      </button>
+                      
+                    <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#myModal">
+                          <i class="fa fa-plus-square"></i> Tambahkan Nutrisi
+                      </button>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -52,22 +41,25 @@
                   <thead>
                   <tr>
                     <th class="center">No.</th>
-                    <th class="center">Nama</th>
+                    <th class="center">Tanggal</th>
+                    <th class="center">Waktu</th>
+                    <th class="center">Nutrisi</th>
+                    <th class="center">Tindak Lanjut</th>
                   </tr>
                   </thead>
                   <tbody>
-                    
                     <?php
-                    $i = 1;
                     while ($data = mysqli_fetch_assoc($execQuery)){
-                        $userid = $data['userid'];
+                      $id_user = $data['id_user'];
                     ?>
                       <tr>
-                      <td><?=$i;?></td>
-                      <td><?=$data['nama']?></td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
                       </tr>
                     <?php
-                    $i++;
                     }
 
                     mysqli_close($conn);
