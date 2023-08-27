@@ -12,7 +12,12 @@ else{
 	elseif ($_GET['module'] == 'dataNutrisi') {
 		include "modules/monitoring/nutrisi/view.php";
 	}
-	
+	elseif ($_GET['module'] == 'datapH') {
+		include "modules/monitoring/ph/view.php";
+	}
+	elseif ($_GET['module'] == 'dataSuhu') {
+		include "modules/monitoring/suhu/view.php";
+	}
 	elseif ($_GET['module'] == 'User') {
 		include "modules/user/view.php";
 	}

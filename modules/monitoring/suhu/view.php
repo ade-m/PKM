@@ -8,7 +8,7 @@
     ?>
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Monitoring Nutrisi Tanaman</h1>
+        <h1>Monitoring Suhu Ruangan</h1>
       </div>
     </div>
   </div><!-- /.container-fluid -->
@@ -25,23 +25,21 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
-            <div class="card">
-    
-              
+            <div class="card">  
               <div class="card-body">
                 <div class="tab-content p-0">
                   <div class="row">
                     <div class="col-12">
                       <h3 class="card-title">
-                        <i class="fas fa-seedling"></i>
-                        Nutrisi (<?= date("d F Y") ?>)
-                      </h3>  
+                        <i class="fas fa-temperature-high mr-1"></i>
+                        Suhu (<?= date("d F Y") ?>)
+                      </h3> 
                     </div>
                     <div class="col-12">
-                      <!-- tds Chart -->
-                      <div class="chart tab-pane active" id="chart-4"
+                      <!-- Temperature Chart -->
+                      <div class="chart tab-pane active" id="chart-1"
                         style="position: relative; height: 300px;">
-                        <canvas id="tdsChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                        <canvas id="tempChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
                       </div>
                     </div>
                   </div>
@@ -54,11 +52,11 @@
             <div class="card">
               <div class="card-header d-md-flex justify-content-md-end">
                       <button type="button" class="btn btn-outline-secondary mr-2" data-toggle="modal" data-target="#myModal">
-                          <i class="fa fa-plus-square"></i> Tabel Nutrisi
+                          <i class="fa fa-plus-square"></i> Tabel Suhu
                       </button>
                       
                     <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#myModal">
-                          <i class="fa fa-plus-square"></i> Tambahkan Nutrisi
+                          <i class="fa fa-plus-square"></i> Atur Suhu Ruangan
                       </button>
               </div>
               <!-- /.card-header -->

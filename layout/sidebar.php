@@ -46,13 +46,13 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="?module=dataKaryawan" class="nav-link <?php echo isPageActive('dataItem') ? 'active' : ''; ?>">
+                    <a href="?module=dataSuhu" class="nav-link <?php echo isPageActive('dataSuhu') ? 'active' : ''; ?>">
                     <i class="nav-icon fas fa-thermometer-empty"></i>
                       <p>Data Suhu</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="?module=dataKaryawan" class="nav-link <?php echo isPageActive('dataItem') ? 'active' : ''; ?>">
+                    <a href="?module=datapH" class="nav-link <?php echo isPageActive('datapH') ? 'active' : ''; ?>">
                       <i class="nav-icon fas fa-vial "></i>
                       <p>Data Ph</p>
                     </a>

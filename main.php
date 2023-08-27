@@ -147,156 +147,249 @@
         // Function to update the chart with new data
         function updateChart(data) {
           console.log(data)
-            var labels = data.map(item => item.date);
-            var tempValues = data.map(item => item.temperature);
-            var humidValues = data.map(item => item.humidity);
-            var phValues = data.map(item => item.ph);
-            var tdsValues = data.map(item => item.tds);
 
+          var labels = data.map(item => item.date.split(' ')[1]);
+          var tempValues = data.map(item => item.temperature);
+          var humidValues = data.map(item => item.humidity);
+          var phValues = data.map(item => item.ph);
+          var tdsValues = data.map(item => item.tds);
+
+          if(allCtx) {
+            allChart.data.labels = labels;
+            allChart.data.datasets[0].data = tempValues;
+            allChart.data.datasets[1].data = humidValues;
+            allChart.data.datasets[2].data = phValues;
+            allChart.data.datasets[3].data = tdsValues;
+            allChart.update();
+          }
+
+          if(tempCtx) {
             tempChart.data.labels = labels;
             tempChart.data.datasets[0].data = tempValues;
             tempChart.update();
+          }
 
+          if(humidCtx) {
             humidChart.data.labels = labels;
             humidChart.data.datasets[0].data = humidValues;
             humidChart.update();
+          }
 
+          if(phCtx) {
             phChart.data.labels = labels;
             phChart.data.datasets[0].data = phValues;
-            phChart.update();
+            phChart.update(); 
+          }
 
+          if(tdsCtx) {
             tdsChart.data.labels = labels;
             tdsChart.data.datasets[0].data = tdsValues;
             tdsChart.update();
+          }
+        }
+
+        // Create the initial chart for All
+        var allCtx = null;
+        var allChart = null;
+        if(document.getElementById('allChart') != null){
+          allCtx = document.getElementById('allChart').getContext('2d');
+          allChart = new Chart(allCtx, {
+            type: 'line',
+            data: {
+              labels: [],
+              datasets: [
+                {
+                  label: 'Suhu',
+                  data: [],
+                  borderColor: 'rgba(219, 4, 4)',
+                  borderWidth: 1,
+                  fill: false,
+                },
+                {
+                  label: 'Kelembapan',
+                  data: [],
+                  borderColor: 'rgba(250, 207, 22)',
+                  borderWidth: 1,
+                  fill: false,
+                },
+                {
+                  label: 'pH',
+                  data: [],
+                  borderColor: 'rgba(40, 4, 219)',
+                  borderWidth: 1,
+                  fill: false,
+                },
+                {
+                  label: 'Tds',
+                  data: [],
+                  borderColor: 'rgba(4, 219, 26)',
+                  borderWidth: 1,
+                  fill: false,
+                },
+              ]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              scales: {
+                x: {
+                  type: 'time',
+                  time: {
+                    unit: 'minute' // Display data in minute intervals
+                  }
+                },
+                y: {
+                  beginAtZero: true,
+                  maxTicksLimit: 1,     
+                }
+              }
+            }
+          });
         }
 
         // Create the initial chart for Temperature
-        var tempCtx = document.getElementById('tempChart').getContext('2d');
-        var tempChart = new Chart(tempCtx, {
-          type: 'line',
-          data: {
-            labels: [],
-            datasets: [{
-              label: 'Suhu',
-              data: [],
-              borderColor: 'rgba(75, 192, 192, 1)',
-              borderWidth: 1,
-              fill: false,
-            }]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-              x: {
-                type: 'time',
-                time: {
-                  unit: 'minute' // Display data in minute intervals
+        var tempCtx = null;
+        var tempChart = null;
+        if(document.getElementById('tempChart') != null) {
+          tempCtx = document.getElementById('tempChart').getContext('2d');
+          tempChart = new Chart(tempCtx, {
+            type: 'line',
+            data: {
+              labels: [],
+              datasets: [{
+                label: 'Suhu',
+                data: [],
+                borderColor: 'rgba(219, 4, 4)',
+                borderWidth: 1,
+                fill: false,
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              scales: {
+                x: {
+                  type: 'time',
+                  time: {
+                    unit: 'minute' // Display data in minute intervals
+                  }
+                },
+                y: {
+                  beginAtZero: true,
+                  maxTicksLimit: 1,     
                 }
-              },
-              y: {
-                beginAtZero: true,
-                maxTicksLimit: 1,     
               }
             }
-          }
-        });
+          });
+        }
 
         // Create the initial chart for Humidity
-        var humidCtx = document.getElementById('humidChart').getContext('2d');
-        var humidChart = new Chart(humidCtx, {
-          type: 'line',
-          data: {
-            labels: [],
-            datasets: [{
-              label: 'Kelembapan',
-              data: [],
-              borderColor: 'rgba(30, 250, 30, 10)',
-              borderWidth: 1,
-              fill: false,
-            }]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-              x: {
-                type: 'time',
-                time: {
-                  unit: 'minute' // Display data in minute intervals
+        var humidCtx = null;
+        var humidChart = null;
+        if(document.getElementById('humidChart') != null) {
+          humidCtx = document.getElementById('humidChart').getContext('2d');
+          humidChart = new Chart(humidCtx, {
+            type: 'line',
+            data: {
+              labels: [],
+              datasets: [{
+                label: 'Kelembapan',
+                data: [],
+                borderColor: 'rgba(250, 207, 22)',
+                borderWidth: 1,
+                fill: false,
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              scales: {
+                x: {
+                  type: 'time',
+                  time: {
+                    unit: 'minute' // Display data in minute intervals
+                  }
+                },
+                y: {
+                  beginAtZero: true,
+                  maxTicksLimit: 1,
                 }
-              },
-              y: {
-                beginAtZero: true,
-                maxTicksLimit: 1,
               }
             }
-          }
-        });
+          });
+        }
 
         // Create the initial chart for pH
-        var phCtx = document.getElementById('phChart').getContext('2d');
-        var phChart = new Chart(phCtx, {
-          type: 'line',
-          data: {
-            labels: [],
-            datasets: [{
-              label: 'pH',
-              data: [],
-              borderColor: 'rgba(275, 42, 92, 30)',
-              borderWidth: 1,
-              fill: false,
-            }]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-              x: {
-                type: 'time',
-                time: {
-                  unit: 'minute' // Display data in minute intervals
+        var phCtx = null;
+        var phChart = null;
+        if(document.getElementById('phChart') != null) {
+          phCtx = document.getElementById('phChart').getContext('2d');
+          phChart = new Chart(phCtx, {
+            type: 'line',
+            data: {
+              labels: [],
+              datasets: [{
+                label: 'pH',
+                data: [],
+                borderColor: 'rgba(40, 4, 219)',
+                borderWidth: 1,
+                fill: false,
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              scales: {
+                x: {
+                  type: 'time',
+                  time: {
+                    unit: 'minute' // Display data in minute intervals
+                  }
+                },
+                y: {
+                  beginAtZero: true,
+                  maxTicksLimit: 1,
                 }
-              },
-              y: {
-                beginAtZero: true,
-                maxTicksLimit: 1,
               }
             }
-          }
-        });
+          });
+        }
 
         // Create the initial chart for tds
-        var tdsCtx = document.getElementById('tdsChart').getContext('2d');
-        var tdsChart = new Chart(tdsCtx, {
-          type: 'line',
-          data: {
-            labels: [],
-            datasets: [{
-              label: 'Tds',
-              data: [],
-              borderColor: 'rgba(5, 12, 192, 100)',
-              borderWidth: 1,
-              fill: false,
-            }]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-              x: {
-                type: 'time',
-                time: {
-                  unit: 'minute' // Display data in minute intervals
+        var tdsCtx = null;
+        var tdsChart = null;
+        if(document.getElementById('tdsChart') != null) {
+          tdsCtx = document.getElementById('tdsChart').getContext('2d');
+          tdsChart = new Chart(tdsCtx, {
+            type: 'line',
+            data: {
+              labels: [],
+              datasets: [{
+                label: 'Nutrisi',
+                data: [],
+                borderColor: 'rgba(4, 219, 26)',
+                borderWidth: 1,
+                fill: false,
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              scales: {
+                x: {
+                  type: 'time',
+                  time: {
+                    unit: 'minute' // Display data in minute intervals
+                  }
+                },
+                y: {
+                  beginAtZero: true,
+                  maxTicksLimit: 1,
                 }
-              },
-              y: {
-                beginAtZero: true,
-                maxTicksLimit: 1,
               }
             }
-          }
-        });
+          });
+        } 
 
         // Fetch data and update the chart every 5 seconds
         fetchData();

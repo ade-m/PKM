@@ -8,7 +8,7 @@
     ?>
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Monitoring Nutrisi Tanaman</h1>
+        <h1>Monitoring pH Tanaman</h1>
       </div>
     </div>
   </div><!-- /.container-fluid -->
@@ -26,22 +26,20 @@
         <div class="row">
           <div class="col-12">
             <div class="card">
-    
-              
               <div class="card-body">
                 <div class="tab-content p-0">
                   <div class="row">
                     <div class="col-12">
                       <h3 class="card-title">
-                        <i class="fas fa-seedling"></i>
-                        Nutrisi (<?= date("d F Y") ?>)
-                      </h3>  
+                        <i class="fas fa-vial"></i>
+                        pH (<?= date("d F Y") ?>)
+                      </h3> 
                     </div>
                     <div class="col-12">
-                      <!-- tds Chart -->
-                      <div class="chart tab-pane active" id="chart-4"
+                      <!-- pH Chart -->
+                      <div class="chart tab-pane active" id="chart-3"
                         style="position: relative; height: 300px;">
-                        <canvas id="tdsChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                          <canvas id="phChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
                       </div>
                     </div>
                   </div>
@@ -54,11 +52,11 @@
             <div class="card">
               <div class="card-header d-md-flex justify-content-md-end">
                       <button type="button" class="btn btn-outline-secondary mr-2" data-toggle="modal" data-target="#myModal">
-                          <i class="fa fa-plus-square"></i> Tabel Nutrisi
+                          <i class="fa fa-plus-square"></i> Tabel pH
                       </button>
                       
                     <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#myModal">
-                          <i class="fa fa-plus-square"></i> Tambahkan Nutrisi
+                          <i class="fa fa-plus-square"></i> Tambahkan pH
                       </button>
               </div>
               <!-- /.card-header -->
@@ -69,7 +67,7 @@
                     <th class="center">No.</th>
                     <th class="center">Tanggal</th>
                     <th class="center">Waktu</th>
-                    <th class="center">Nutrisi</th>
+                    <th class="center">pH</th>
                     <th class="center">Tindak Lanjut</th>
                   </tr>
                   </thead>
