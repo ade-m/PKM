@@ -11,11 +11,16 @@
     require_once 'layout/head.php'
   ?>
 </head>
+<style>
+  <?php
+    require_once 'dist/css/customCss.css'
+  ?>
+</style>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+  <nav class="main-header navbar navbar-expand navbar-dark" style="background-color: #31845c">
   <?php
     require_once 'layout/navbar.php'
   ?>
@@ -23,7 +28,7 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-light-primary elevation-4">
+  <aside class="main-sidebar sidebar-dark-white elevation-4" style="background-color: #014625e2">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
       <img src="dist/img/machine.png" width="50px" height="50px" style="margin-right: 10px;margin-left: 10px;">

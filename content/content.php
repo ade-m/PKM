@@ -18,6 +18,9 @@ else{
 	elseif ($_GET['module'] == 'dataSuhu') {
 		include "modules/monitoring/suhu/view.php";
 	}
+	elseif ($_GET['module'] == 'kandunganAir') {
+		include "modules/action/kandunganAir/view.php";
+	}
 	elseif ($_GET['module'] == 'User') {
 		include "modules/user/view.php";
 	}
