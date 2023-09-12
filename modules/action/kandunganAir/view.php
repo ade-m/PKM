@@ -35,9 +35,12 @@ $execQuery = mysqli_query($conn, $query)
                     <span class="fw-600 fs-lg">pH Up</span>
                   </div>
                   <div class="col-12 d-flex justify-content-center">
-                    <button type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <button id="button1" type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">
                       <div class="handle"></div>
                     </button>
+                  </div>
+                  <div class="col-12 mt-3 d-flex justify-content-center" style="height:150px">
+                    <img id="waterDrop1" src="dist/gif/waterDrop.gif" alt="water drop" hidden>
                   </div>
                 </div>
               </div>
@@ -48,9 +51,12 @@ $execQuery = mysqli_query($conn, $query)
                     <span class="fw-600 fs-lg">pH Down</span>
                   </div>
                   <div class="col-12 d-flex justify-content-center">
-                    <button type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <button id="button2" type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">
                       <div class="handle"></div>
                     </button>
+                  </div>
+                  <div class="col-12 mt-3 d-flex justify-content-center" style="height:150px">
+                    <img id="waterDrop2" src="dist/gif/waterDrop.gif" alt="water drop" hidden>
                   </div>
                 </div>
               </div>
@@ -61,9 +67,12 @@ $execQuery = mysqli_query($conn, $query)
                     <span class="fw-600 fs-lg">Ab Mix</span>
                   </div>
                   <div class="col-12 d-flex justify-content-center">
-                    <button type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <button id="button3" type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">
                       <div class="handle"></div>
                     </button>
+                  </div>
+                  <div class="col-12 mt-3 d-flex justify-content-center" style="height:150px">
+                    <img id="waterDrop3" src="dist/gif/waterDrop.gif" alt="water drop" hidden>
                   </div>
                 </div>
               </div>
@@ -74,13 +83,19 @@ $execQuery = mysqli_query($conn, $query)
                     <span class="fw-600 fs-lg">Ab apa la</span>
                   </div>
                   <div class="col-12 d-flex justify-content-center">
-                    <button type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <button id="button4" type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">
                       <div class="handle"></div>
                     </button>
+                  </div>
+                  <div class="col-12 mt-3 d-flex justify-content-center" style="height:150px">
+                    <img id="waterDrop4" src="dist/gif/waterDrop.gif" alt="water drop" hidden>
                   </div>
                 </div>
               </div>
 
+              <div class="col-12">
+                <div class="water-tank bg-primary p-5 mx-5"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -165,3 +180,62 @@ $execQuery = mysqli_query($conn, $query)
     </div><!-- Modal Close -->
   </div>
 </section>
+
+<script>
+  let button1 = false;
+  let button2 = false;
+  let button3 = false;
+  let button4 = false;
+
+  // button 1
+  $('#button1').click(function() {
+    button1 = !button1;
+    //On
+    if (button1) {
+      $('#waterDrop1').attr("hidden", false);
+    }
+    //Off
+    else {
+      $('#waterDrop1').attr("hidden", true);
+    }
+  })
+
+  // button 2
+  $('#button2').click(function() {
+    button2 = !button2;
+    //On
+    if (button2) {
+      $('#waterDrop2').attr("hidden", false);
+    }
+    //Off
+    else {
+      $('#waterDrop2').attr("hidden", true);
+    }
+  })
+
+  // button 3
+  $('#button3').click(function() {
+    button3 = !button3;
+    //On
+    if (button3) {
+      $('#waterDrop3').attr("hidden", false);
+    }
+    //Off
+    else {
+      $('#waterDrop3').attr("hidden", true);
+    }
+  })
+
+  // button 4
+  $('#button4').click(function() {
+    button4 = !button4;
+    //On
+    if (button4) {
+      $('#waterDrop4').attr("hidden", false);
+    }
+    //Off
+    else {
+      $('#waterDrop4').attr("hidden", true);
+    }
+  })
+</script>

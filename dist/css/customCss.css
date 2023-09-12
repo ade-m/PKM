@@ -6,6 +6,10 @@
     font-size: large;
 }
 
+.water-tank {
+  border-radius: 15px 15px 50px 50px;
+}
+
 /* Switch */
 .btn-toggle {
   margin: 0 4rem;
