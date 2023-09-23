@@ -39,8 +39,11 @@ $execQuery = mysqli_query($conn, $query)
                       <div class="handle"></div>
                     </button>
                   </div>
+                  <div class="col-12 mt-20 d-flex justify-content-center">
+                    <img id="" width = "100px" height="100px" src="dist/img/water.png" alt="tap">
+                  </div>
                   <div class="col-12 mt-3 d-flex justify-content-center" style="height:150px">
-                    <img id="waterDrop1" src="dist/gif/waterDrop.gif" alt="water drop" hidden>
+                    <img id="waterDrop1" src="dist/gif/waterFlow.gif" alt="water flow" hidden>
                   </div>
                 </div>
               </div>
@@ -55,8 +58,11 @@ $execQuery = mysqli_query($conn, $query)
                       <div class="handle"></div>
                     </button>
                   </div>
+                  <div class="col-12 mt-10 d-flex justify-content-center">
+                    <img id="" width = "100px" height="100px" src="dist/img/water.png" alt="tap">
+                  </div>
                   <div class="col-12 mt-3 d-flex justify-content-center" style="height:150px">
-                    <img id="waterDrop2" src="dist/gif/waterDrop.gif" alt="water drop" hidden>
+                    <img id="waterDrop2" src="dist/gif/waterFlow.gif" alt="water flow" hidden>
                   </div>
                 </div>
               </div>
@@ -64,15 +70,18 @@ $execQuery = mysqli_query($conn, $query)
               <div class="col-3">
                 <div class="row">
                   <div class="col-12 mb-3 d-flex justify-content-center">
-                    <span class="fw-600 fs-lg">Ab Mix</span>
+                    <span class="fw-600 fs-lg">A</span>
                   </div>
                   <div class="col-12 d-flex justify-content-center">
                     <button id="button3" type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">
                       <div class="handle"></div>
                     </button>
                   </div>
+                  <div class="col-12 mt-20 d-flex justify-content-center">
+                    <img id="" width = "100px" height="100px" src="dist/img/water.png" alt="tap">
+                  </div>
                   <div class="col-12 mt-3 d-flex justify-content-center" style="height:150px">
-                    <img id="waterDrop3" src="dist/gif/waterDrop.gif" alt="water drop" hidden>
+                    <img id="waterDrop3" src="dist/gif/waterFlow.gif" alt="water flow" hidden>
                   </div>
                 </div>
               </div>
@@ -80,15 +89,18 @@ $execQuery = mysqli_query($conn, $query)
               <div class="col-3">
                 <div class="row">
                   <div class="col-12 mb-3 d-flex justify-content-center">
-                    <span class="fw-600 fs-lg">Ab apa la</span>
+                    <span class="fw-600 fs-lg">B</span>
                   </div>
                   <div class="col-12 d-flex justify-content-center">
                     <button id="button4" type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">
                       <div class="handle"></div>
                     </button>
                   </div>
+                  <div class="col-12 mt-20 d-flex justify-content-center">
+                    <img id="" width = "100px" height="100px" src="dist/img/water.png" alt="tap">
+                  </div>
                   <div class="col-12 mt-3 d-flex justify-content-center" style="height:150px">
-                    <img id="waterDrop4" src="dist/gif/waterDrop.gif" alt="water drop" hidden>
+                    <img id="waterDrop4" src="dist/gif/waterFlow.gif" alt="water flow" hidden>
                   </div>
                 </div>
               </div>
