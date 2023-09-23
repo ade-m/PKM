@@ -64,7 +64,7 @@ $execQuery = mysqli_query($conn, $query)
               <div class="col-3">
                 <div class="row">
                   <div class="col-12 mb-3 d-flex justify-content-center">
-                    <span class="fw-600 fs-lg">Ab Mix</span>
+                    <span class="fw-600 fs-lg">Nutrisi A</span>
                   </div>
                   <div class="col-12 d-flex justify-content-center">
                     <button id="button3" type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">
@@ -80,7 +80,7 @@ $execQuery = mysqli_query($conn, $query)
               <div class="col-3">
                 <div class="row">
                   <div class="col-12 mb-3 d-flex justify-content-center">
-                    <span class="fw-600 fs-lg">Ab apa la</span>
+                    <span class="fw-600 fs-lg">Nutrisi B</span>
                   </div>
                   <div class="col-12 d-flex justify-content-center">
                     <button id="button4" type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">

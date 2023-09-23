@@ -50,7 +50,7 @@
 
           <div class="col-12">
             <div class="card">
-              <div class="card-header d-md-flex justify-content-md-end">
+              <!-- <div class="card-header d-md-flex justify-content-md-end">
                       <button type="button" class="btn btn-outline-secondary mr-2" data-toggle="modal" data-target="#myModal">
                           <i class="fa fa-plus-square"></i> Tabel Suhu
                       </button>
@@ -58,7 +58,7 @@
                     <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#myModal">
                           <i class="fa fa-plus-square"></i> Atur Suhu Ruangan
                       </button>
-              </div>
+              </div> -->
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
@@ -67,7 +67,7 @@
                     <th class="center">No.</th>
                     <th class="center">Tanggal</th>
                     <th class="center">Waktu</th>
-                    <th class="center">Nutrisi</th>
+                    <th class="center">Suhu</th>
                     <th class="center">Tindak Lanjut</th>
                   </tr>
                   </thead>
