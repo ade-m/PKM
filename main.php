@@ -159,6 +159,20 @@
           var phValues = data.map(item => item.ph);
           var tdsValues = data.map(item => item.tds);
 
+          //for card at dashboard
+          if(document.getElementById("latestTemp")) {
+            document.getElementById("latestTemp").innerHTML = tempValues[tempValues.length-1];
+          }
+          if(document.getElementById("latestHumid")) {
+            document.getElementById("latestHumid").innerHTML = humidValues[humidValues.length-1];
+          }
+          if(document.getElementById("latestPH")) {
+            document.getElementById("latestPH").innerHTML = phValues[phValues.length-1];
+          }
+          if(document.getElementById("latestTds")) {
+            document.getElementById("latestTds").innerHTML = tdsValues[tdsValues.length-1];
+          }
+
           if(allCtx) {
             allChart.data.labels = labels;
             allChart.data.datasets[0].data = tempValues;

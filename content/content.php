@@ -21,6 +21,9 @@ else{
 	elseif ($_GET['module'] == 'kandunganAir') {
 		include "modules/action/kandunganAir/view.php";
 	}
+	elseif ($_GET['module'] == 'hamaTanaman') {
+		include "modules/action/hamaTanaman/view.php";
+	}
 	elseif ($_GET['module'] == 'User') {
 		include "modules/user/view.php";
 	}

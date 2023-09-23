@@ -52,7 +52,7 @@
 
           <div class="col-12">
             <div class="card">
-              <div class="card-header d-md-flex justify-content-md-end">
+              <!-- <div class="card-header d-md-flex justify-content-md-end">
                       <button type="button" class="btn btn-outline-secondary mr-2" data-toggle="modal" data-target="#myModal">
                           <i class="fa fa-plus-square"></i> Tabel Nutrisi
                       </button>
@@ -60,7 +60,7 @@
                     <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#myModal">
                           <i class="fa fa-plus-square"></i> Tambahkan Nutrisi
                       </button>
-              </div>
+              </div> -->
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">

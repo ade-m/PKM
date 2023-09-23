@@ -38,7 +38,7 @@ if ($hak_akses == 'Super Admin') {
           <i class="nav-icon fas fa-tv"></i>
           <p>
             Monitor
-            <i class="fas fa-angle-left right"></i>
+            <i class="fas fa-angle-right right"></i>
           </p>
         </a>
         <ul class="nav nav-treeview pl-2">
@@ -68,14 +68,20 @@ if ($hak_akses == 'Super Admin') {
           <i class="nav-icon fa-regular fa-circle-dot"></i>
           <p>
             Action
-            <i class="fas fa-angle-left right"></i>
+            <i class="fas fa-angle-right right"></i>
           </p>
         </a>
         <ul class="nav nav-treeview pl-2">
           <li class="nav-item">
             <a href="?module=kandunganAir" class="nav-link <?php echo isPageActive('kandunganAir') ? 'active' : ''; ?>">
               <i class="nav-icon fa-solid fa-bottle-water"></i>
-              <p>Mengatur Kandungan Air</p>
+              <p>Kandungan Air</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="?module=hamaTanaman" class="nav-link <?php echo isPageActive('hamaTanaman') ? 'active' : ''; ?>">
+              <i class="nav-icon fa-solid fa-bug"></i>
+              <p>Hama Tanaman</p>
             </a>
           </li>
         </ul>
