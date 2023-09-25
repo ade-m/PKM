@@ -106,7 +106,8 @@ $execQuery = mysqli_query($conn, $query)
               </div>
 
               <div class="col-12">
-                <div class="water-tank bg-primary p-5 mx-5"></div>
+                <!-- <div class="water-tank bg-primary p-5 mx-5"></div> -->
+                <img id="" width="100%" height="250px" src="dist/gif/sea.gif" alt="water flow" >
               </div>
             </div>
           </div>

@@ -10,6 +10,26 @@
   border-radius: 15px 15px 50px 50px;
 }
 
+.water-flow {
+  position: absolute;
+  width: 5px; /* Lebar air yang keluar */
+  height: 0;
+  background-color: blue; /* Warna air biru */
+  top: 70px; /* Sesuaikan tinggi air yang keluar dari keran */
+  left: 50%;
+  transform: translateX(-50%);
+  animation: waterFlow 2s linear 1 forwards;
+}
+
+@keyframes waterFlow {
+  0% {
+      height: 0;
+  }
+  100% {
+      height: 200px; /* Sesuaikan tinggi air yang keluar dari keran */
+  }
+}
+
 /* Switch */
 .btn-toggle {
   margin: 0 4rem;
