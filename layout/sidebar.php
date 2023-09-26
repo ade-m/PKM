@@ -86,7 +86,14 @@ if ($hak_akses == 'Super Admin') {
           </li>
         </ul>
       </li>
-
+      <li class="nav-item">
+        <a href="?module=config" class="nav-link <?php echo isPageActive('config') ? 'active' : ''; ?>">
+          <i class="nav-icon fas fa-tools"></i>
+          <p>
+            Settings
+          </p>
+        </a>
+      </li>
       <li class="nav-item">
         <a href="?module=User" class="nav-link <?php echo isPageActive('User') ? 'active' : ''; ?>">
           <i class="nav-icon fas fa-user"></i>

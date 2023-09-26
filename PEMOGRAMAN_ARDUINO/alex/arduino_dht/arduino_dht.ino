@@ -10,6 +10,8 @@
 #define RELAY2 50
 #define RELAY3 48
 #define RELAY4 46
+#define RELAY5 40
+#define RELAY6 13
 
 String inString;
 
@@ -28,8 +30,8 @@ void setup(){
   pinMode(RELAY2, OUTPUT);
   pinMode(RELAY3, OUTPUT);
   pinMode(RELAY4, OUTPUT);
-  
-
+  pinMode(RELAY5, OUTPUT);
+  pinMode(RELAY6, OUTPUT);
 
   gravityTds.setPin(TdsSensorPin);
   gravityTds.setAref(5.0);  //reference voltage on ADC, default 5.0V on Arduino UNO
@@ -56,6 +58,16 @@ void controlRelays() {
     digitalWrite(RELAY4, LOW);
   else if (inString.indexOf("[4OFF]") > 0)
     digitalWrite(RELAY4, HIGH);
+  
+  if (inString.indexOf("[5ON]") > 0)
+    digitalWrite(RELAY5, LOW);
+  else if (inString.indexOf("[5OFF]") > 0)
+    digitalWrite(RELAY5, HIGH);
+  
+  if (inString.indexOf("[6ON]") > 0)
+    digitalWrite(RELAY6, LOW);
+  else if (inString.indexOf("[6OFF]") > 0)
+    digitalWrite(RELAY6, HIGH);
 
   inString = "";
 }
@@ -155,6 +167,22 @@ void loop(){
       } else if (inString.indexOf("[4OFF]") != -1) {
         digitalWrite(RELAY4, HIGH);
         Serial.println("[4OFF] command received");
+      } 
+
+      if (inString.indexOf("[5ON]") != -1) {
+        digitalWrite(RELAY5, LOW);
+        Serial.println("[5ON] command received");
+      } else if (inString.indexOf("[5OFF]") != -1) {
+        digitalWrite(RELAY5, HIGH);
+        Serial.println("[5OFF] command received");
+      } 
+
+      if (inString.indexOf("[6ON]") != -1) {
+        digitalWrite(RELAY6, LOW);
+        Serial.println("[6ON] command received");
+      } else if (inString.indexOf("[6OFF]") != -1) {
+        digitalWrite(RELAY6, HIGH);
+        Serial.println("[6OFF] command received");
       } 
       inString = "";
     }

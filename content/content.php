@@ -24,6 +24,9 @@ else{
 	elseif ($_GET['module'] == 'hamaTanaman') {
 		include "modules/action/hamaTanaman/view.php";
 	}
+	elseif ($_GET['module'] == 'config') {
+		include "modules/config/view.php";
+	}
 	elseif ($_GET['module'] == 'User') {
 		include "modules/user/view.php";
 	}
