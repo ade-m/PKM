@@ -1,31 +1,59 @@
+#include <OneWire.h>
 #include <DHT.h>
-
-#define DHTPIN 2
-#define DHTTYPE DHT11
 #include <EEPROM.h>
-#include "GravityTDS.h"
-#define TdsSensorPin A1
+#include <GravityTDS.h>
+#include <DallasTemperature.h>
+#include <UTFTGLUE.h>              //use GLUE class and constructor
+
+UTFTGLUE myGLCD(0,A2,A1,A3,A4,A0); //all dummy args
+unsigned long lastUpdate = 0;
+const unsigned long updateInterval = 2000; // Update every 10 seconds
+// Pin Definitions
+#define DHTPIN 22
+#define DHTTYPE DHT11
+#define TdsSensorPin A8
+#define PhSensorPin A7
+#define SuhuSensorPin A10
 
 #define RELAY1 52
 #define RELAY2 50
 #define RELAY3 48
 #define RELAY4 46
-#define RELAY5 40
-#define RELAY6 13
+#define RELAY5 44
+#define RELAY6 42
 
+// Sensor setup
+OneWire oneWire(SuhuSensorPin);
+DallasTemperature sensorSuhu(&oneWire);
+float suhu;
+
+
+
+// String for receiving commands
 String inString;
 
+
+// Sensor objects
 GravityTDS gravityTds;
 DHT dht(DHTPIN, DHTTYPE);
-float humidity, temperature,tds,ph;
-unsigned long int avgval; 
-int buffer_arr[10],temp;
+float humidity, temperature, tds, ph;
+unsigned long int avgval;
+int buffer_arr[10], temp;
 String kirim = "";
-void setup(){
+
+void setup() {
+  // Serial initialization
   Serial.begin(9600);
   Serial3.begin(115200);
-  dht.begin();
 
+  // Sensor initialization
+  dht.begin();
+  sensorSuhu.begin();
+  randomSeed(analogRead(0));
+  myGLCD.InitLCD();
+  myGLCD.setFont(BigFont);
+
+  // Relay pins setup
   pinMode(RELAY1, OUTPUT);
   pinMode(RELAY2, OUTPUT);
   pinMode(RELAY3, OUTPUT);
@@ -33,11 +61,46 @@ void setup(){
   pinMode(RELAY5, OUTPUT);
   pinMode(RELAY6, OUTPUT);
 
+  // TDS sensor setup
   gravityTds.setPin(TdsSensorPin);
-  gravityTds.setAref(5.0);  //reference voltage on ADC, default 5.0V on Arduino UNO
-  gravityTds.setAdcRange(1024);  //1024 for 10bit ADC;4096 for 12bit ADC
-  gravityTds.begin();  //initialization
+  gravityTds.setAref(5.0); // Reference voltage on ADC, default 5.0V on Arduino UNO
+  gravityTds.setAdcRange(1024); // 1024 for 10-bit ADC; 4096 for 12-bit ADC
+  gravityTds.begin(); // Initialization
 }
+
+void drawDataScreen(float phValue, float tdsValue, float temperatureValue, float humidityValue) {
+  myGLCD.clrScr();
+  int buf[478];
+  int x, x2;
+  int y, y2;
+  int r;
+
+  myGLCD.setColor(0, 0, 0); // Background color
+  myGLCD.fillRect(0, 0, 240, 320); // Fill the entire screen with the background color
+
+  myGLCD.setColor(255, 255, 255); // Text color
+  myGLCD.setFont(BigFont); // Set font size
+
+  // Display Ph
+  myGLCD.print("Ph: " + String(phValue), 15, 80);
+
+  // Display Tds
+  myGLCD.print("Tds: " + String(tdsValue) + " PPM", 15, 130);
+
+  // Display Suhu
+  myGLCD.print("Suhu: " + String(temperatureValue) + " C", 15, 180);
+
+  // Display Humidity
+  myGLCD.print("Humidity: " + String(humidityValue) + " %", 15, 230);
+
+  // Display the text "Hydroguard" below the image
+  myGLCD.setColor(0, 255, 0); // Text color for "Hydroguard"
+  myGLCD.print("Hydroguard", 300, 20);
+
+  delay(500);
+  // Tambahkan delay untuk menampilkan data
+}
+
 void controlRelays() {
   if (inString.indexOf("[1ON]") > 0)
     digitalWrite(RELAY1, LOW);
@@ -58,57 +121,66 @@ void controlRelays() {
     digitalWrite(RELAY4, LOW);
   else if (inString.indexOf("[4OFF]") > 0)
     digitalWrite(RELAY4, HIGH);
-  
+
   if (inString.indexOf("[5ON]") > 0)
     digitalWrite(RELAY5, LOW);
   else if (inString.indexOf("[5OFF]") > 0)
     digitalWrite(RELAY5, HIGH);
-  
+
   if (inString.indexOf("[6ON]") > 0)
     digitalWrite(RELAY6, LOW);
   else if (inString.indexOf("[6OFF]") > 0)
     digitalWrite(RELAY6, HIGH);
 
   inString = "";
+
+  
 }
-void loop(){
+
+
+
+
+void loop() {
+
+  unsigned long currentMillis = millis();
+
+  if (currentMillis - lastUpdate >= updateInterval) {
+    lastUpdate = currentMillis;
+
+  // Read sensor data
   humidity = dht.readHumidity();
   temperature = dht.readTemperature();
-//  Serial.print("humidity : ");
-//  Serial.print(humidity);
-//  Serial.print(", temperature : ");
-//  Serial.println(temperature);
-//tds
-  //temperature = readTemperature();  //add your temperature sensor and read it
-  //ph
-  for(int i=0; i<10; i++) 
-  { 
-    buffer_arr[i]=analogRead(A0);
+  sensorSuhu.requestTemperatures();
+  suhu = sensorSuhu.getTempCByIndex(0);
+
+  // Read pH sensor data
+  for (int i = 0; i < 10; i++) {
+    buffer_arr[i] = analogRead(PhSensorPin);
     delay(10);
   }
-  for(int i=0; i<9; i++)
-  {
-    for(int j=i+1; j<10; j++)
-    {
-      if(buffer_arr[i]>buffer_arr[j])
-      {
-        temp=buffer_arr[i];
-        buffer_arr[i]=buffer_arr[j];
-        buffer_arr[j]=temp;
+  for (int i = 0; i < 9; i++) {
+    for (int j = i + 1; j < 10; j++) {
+      if (buffer_arr[i] > buffer_arr[j]) {
+        temp = buffer_arr[i];
+        buffer_arr[i] = buffer_arr[j];
+        buffer_arr[j] = temp;
       }
     }
   }
-  avgval=0;
-  for(int i=2; i<8; i++)
-    avgval+=buffer_arr[i];
+  avgval = 0;
+  for (int i = 2; i < 8; i++)
+    avgval += buffer_arr[i];
 
-  float volt=(float)avgval*5.0/1024/6; 
+  float volt = (float)avgval * 5.0 / 1024 / 6;
   ph = -6.18 * volt + 26.10;
-  //----------------------------------------
-  gravityTds.setTemperature(20);  // set the temperature and execute temperature compensation
-  gravityTds.update();  //sample and calculate
-  tds = gravityTds.getTdsValue();  // then get the value
 
+  // Read TDS sensor data
+  gravityTds.setTemperature(suhu);
+  gravityTds.update();
+  tds = gravityTds.getTdsValue();
+  
+}
+  // Prepare data for transmission
   kirim = "";
   kirim += humidity;
   kirim += ";";
@@ -120,74 +192,79 @@ void loop(){
 
   Serial3.println(kirim);
 
-  if (Serial3.available()) {
-  String msg = "";
-  while (Serial3.available()) {
-    char inChar = Serial3.read();
-    Serial.write(inChar);
-    msg += inChar;
-    delay(50);
-  }
-
-  Serial.println(msg);
-
   // Process commands in the received message
-  for (int i = 0; i < msg.length(); i++) {
-    char inChar = msg.charAt(i);
-    inString += inChar;
+  if (Serial3.available()) {
+    String msg = "";
+    while (Serial3.available()) {
+      char inChar = Serial3.read();
+      Serial.write(inChar);
+      msg += inChar;
+      delay(50);
+    }
 
-    if (inChar == ']') {
-      if (inString.indexOf("[1ON]") != -1) {
-        digitalWrite(RELAY1, LOW);
-        Serial.println("[1ON] command received");
-      } else if (inString.indexOf("[1OFF]") != -1) {
-        digitalWrite(RELAY1, HIGH);
-        Serial.println("[1OFF] command received");
+    Serial.println(msg);
+
+    for (int i = 0; i < msg.length(); i++) {
+      char inChar = msg.charAt(i);
+      inString += inChar;
+
+      if (inChar == ']') {
+        if (inString.indexOf("[1ON]") != -1) {
+          digitalWrite(RELAY1, LOW);
+          Serial.println("[1ON] command received");
+        } else if (inString.indexOf("[1OFF]") != -1) {
+          digitalWrite(RELAY1, HIGH);
+          Serial.println("[1OFF] command received");
+        }
+
+        if (inString.indexOf("[2ON]") != -1) {
+          digitalWrite(RELAY2, LOW);
+          Serial.println("[2ON] command received");
+        } else if (inString.indexOf("[2OFF]") != -1) {
+          digitalWrite(RELAY2, HIGH);
+          Serial.println("[2OFF] command received");
+        }
+
+        if (inString.indexOf("[3ON]") != -1) {
+          digitalWrite(RELAY3, LOW);
+          Serial.println("[3ON] command received");
+        } else if (inString.indexOf("[3OFF]") != -1) {
+          digitalWrite(RELAY3, HIGH);
+          Serial.println("[3OFF] command received");
+        }
+
+        if (inString.indexOf("[4ON]") != -1) {
+          digitalWrite(RELAY4, LOW);
+          Serial.println("[4ON] command received");
+        } else if (inString.indexOf("[4OFF]") != -1) {
+          digitalWrite(RELAY4, HIGH);
+          Serial.println("[4OFF] command received");
+        }
+
+        if (inString.indexOf("[5ON]") != -1) {
+          digitalWrite(RELAY5, LOW);
+          Serial.println("[5ON] command received");
+        } else if (inString.indexOf("[5OFF]") != -1) {
+          digitalWrite(RELAY5, HIGH);
+          Serial.println("[5OFF] command received");
+        }
+
+        if (inString.indexOf("[6ON]") != -1) {
+          digitalWrite(RELAY6, LOW);
+          Serial.println("[6ON] command received");
+        } else if (inString.indexOf("[6OFF]") != -1) {
+          digitalWrite(RELAY6, HIGH);
+          Serial.println("[6OFF] command received");
+        }
+
+        inString = "";
       }
-
-      if (inString.indexOf("[2ON]") != -1) {
-        digitalWrite(RELAY2, LOW);
-        Serial.println("[2ON] command received");
-      } else if (inString.indexOf("[2OFF]") != -1) {
-        digitalWrite(RELAY2, HIGH);
-        Serial.println("[2OFF] command received");
-      }
-
-      if (inString.indexOf("[3ON]") != -1) {
-        digitalWrite(RELAY3, LOW);
-        Serial.println("[3ON] command received");
-      } else if (inString.indexOf("[3OFF]") != -1) {
-        digitalWrite(RELAY3, HIGH);
-        Serial.println("[3OFF] command received");
-      }
-
-      if (inString.indexOf("[4ON]") != -1) {
-        digitalWrite(RELAY4, LOW);
-        Serial.println("[4ON] command received");
-      } else if (inString.indexOf("[4OFF]") != -1) {
-        digitalWrite(RELAY4, HIGH);
-        Serial.println("[4OFF] command received");
-      } 
-
-      if (inString.indexOf("[5ON]") != -1) {
-        digitalWrite(RELAY5, LOW);
-        Serial.println("[5ON] command received");
-      } else if (inString.indexOf("[5OFF]") != -1) {
-        digitalWrite(RELAY5, HIGH);
-        Serial.println("[5OFF] command received");
-      } 
-
-      if (inString.indexOf("[6ON]") != -1) {
-        digitalWrite(RELAY6, LOW);
-        Serial.println("[6ON] command received");
-      } else if (inString.indexOf("[6OFF]") != -1) {
-        digitalWrite(RELAY6, HIGH);
-        Serial.println("[6OFF] command received");
-      } 
-      inString = "";
     }
   }
-}
-
+  // Draw the updated data on the screen
+  drawDataScreen(ph, tds, temperature, humidity);
+  
   delay(5000);
+
+
 }

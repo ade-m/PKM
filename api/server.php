@@ -9,7 +9,7 @@
     $tds = $_POST["tds"];
 
     $query = "INSERT INTO log (humidity , temperature , ph , tds) 
-            VALUES ( '".$humidity."','".$temperature."','".$ph."','".$tds."')";
+              VALUES ( '".$humidity."','".$temperature."','".$ph."','".$tds."')";
 
     if ($conn->query($query) === TRUE) {
       echo "Berhasil menyimpan data ke table log";

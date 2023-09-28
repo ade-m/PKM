@@ -8,7 +8,7 @@ const char *password = "ascend1234";
 
 float humidity, temperature, tds, ph;
 
-int relayPins[] = {52, 50, 48, 46, 13};
+int relayPins[] = {52, 50, 48, 46, 44, 42};
 
 IPAddress staticIP(192, 168, 1, 50);
 IPAddress gateway(192, 168, 1, 1);
@@ -18,6 +18,8 @@ void setup() {
   Serial.begin(115200);
   connectToWifi();
 }
+
+
 
 void connectToWifi() {
   WiFi.mode(WIFI_OFF);
@@ -81,7 +83,7 @@ void kirimDanBacaDataKeServer() {
              "&tds=" + String(tds) +
              "&ph=" + String(ph);
 
-  http.begin(client, "http://192.168.1.63/PKM/api/server.php");
+  http.begin(client, "http://192.168.1.62/PKM/api/server.php");
   http.addHeader("Content-Type", "application/x-www-form-urlencoded");
 
   int httpCode1 = http.POST(postData);
@@ -90,7 +92,7 @@ void kirimDanBacaDataKeServer() {
   Serial.println(httpCode1);
 
   // Baca data dari server
-  http.begin(client, "http://192.168.1.63/PKM/api/readData.php");
+  http.begin(client, "http://192.168.1.62/PKM/api/readData.php");
   http.addHeader("Content-Type", "application/x-www-form-urlencoded");
 
   int httpCode2 = http.POST("toggle_Relay=1");
