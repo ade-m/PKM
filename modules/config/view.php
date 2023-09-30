@@ -29,7 +29,7 @@
               <div class="card-body">
                 <div class="tab-content p-0">
                   <div class="row">
-                    <div class="col-3">
+                    <div class="col-sm-5 col-md-3">
                       <div class="form-group">
                         <label>Durasi Insert Data</label>
                         <input type="insertData" class="form-control">
@@ -38,7 +38,7 @@
                     <div class="col-1">
                       
                     </div>
-                    <div class="col-3">
+                    <div class="col-sm-5 col-md-3">
                       <div class="form-group">
                         <label>Durasi Pembukaan Pompa</label>
                         <input type="insertData" class="form-control">
@@ -47,7 +47,7 @@
                   </div>
                   
                   <div class="row">
-                    <div class="col-3">
+                    <div class="col-sm-5 col-md-3">
                       <div class="form-group">
                         <label>Durasi Pembukaan Ph</label>
                         <input type="insertData" class="form-control">
@@ -56,7 +56,7 @@
                     <div class="col-1">
                       
                     </div>
-                    <div class="col-3">
+                    <div class="col-sm-5 col-md-3">
                       <div class="form-group">
                         <label>Durasi Pembukaan Exhaust Fan</label>
                         <input type="insertData" class="form-control">
@@ -64,7 +64,7 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-3">
+                    <div class="col-sm-5 col-md-3">
                       <div class="form-group">
                         <label>Durasi Pembukaan Nutrisi</label>
                         <input type="insertData" class="form-control">

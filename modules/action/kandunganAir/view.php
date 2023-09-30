@@ -39,10 +39,10 @@ $execQuery = mysqli_query($conn, $query)
                       <div class="handle"></div>
                     </button>
                   </div>
-                  <div class="col-12 mt-20 d-flex justify-content-center">
+                  <div class="col-12 mt-4 d-flex justify-content-center">
                     <img id="" width = "100px" height="100px" src="dist/img/water.png" alt="tap">
                   </div>
-                  <div class="col-12 mt-3 d-flex justify-content-center" style="height:150px">
+                  <div class="col-12 mt-3 d-flex justify-content-end" style="height:150px; padding-right: 2.1rem">
                     <img id="waterDrop1" src="dist/gif/waterFlow.gif" alt="water flow" hidden>
                   </div>
                 </div>
@@ -58,10 +58,10 @@ $execQuery = mysqli_query($conn, $query)
                       <div class="handle"></div>
                     </button>
                   </div>
-                  <div class="col-12 mt-10 d-flex justify-content-center">
+                  <div class="col-12 mt-4 d-flex justify-content-center">
                     <img id="" width = "100px" height="100px" src="dist/img/water.png" alt="tap">
                   </div>
-                  <div class="col-12 mt-3 d-flex justify-content-center" style="height:150px">
+                  <div class="col-12 mt-3 d-flex justify-content-end" style="height:150px; padding-right: 1.8rem">
                     <img id="waterDrop2" src="dist/gif/waterFlow.gif" alt="water flow" hidden>
                   </div>
                 </div>
@@ -77,10 +77,10 @@ $execQuery = mysqli_query($conn, $query)
                       <div class="handle"></div>
                     </button>
                   </div>
-                  <div class="col-12 mt-20 d-flex justify-content-center">
+                  <div class="col-12 mt-4 d-flex justify-content-center">
                     <img id="" width = "100px" height="100px" src="dist/img/water.png" alt="tap">
                   </div>
-                  <div class="col-12 mt-3 d-flex justify-content-center" style="height:150px">
+                  <div class="col-12 mt-3 d-flex justify-content-end" style="height:150px; padding-right: 2.1rem">
                     <img id="waterDrop3" src="dist/gif/waterFlow.gif" alt="water flow" hidden>
                   </div>
                 </div>
@@ -96,10 +96,10 @@ $execQuery = mysqli_query($conn, $query)
                       <div class="handle"></div>
                     </button>
                   </div>
-                  <div class="col-12 mt-20 d-flex justify-content-center">
+                  <div class="col-12 mt-4 d-flex justify-content-center">
                     <img id="" width = "100px" height="100px" src="dist/img/water.png" alt="tap">
                   </div>
-                  <div class="col-12 mt-3 d-flex justify-content-center" style="height:150px">
+                  <div class="col-12 mt-3 d-flex justify-content-end" style="height:150px; padding-right: 2rem">
                     <img id="waterDrop4" src="dist/gif/waterFlow.gif" alt="water flow" hidden>
                   </div>
                 </div>

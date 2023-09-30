@@ -26,7 +26,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-      <img src="../dist/img/machine.png" width="70px" height="70px" style="margin-right: 10px;">
+      <img src="../dist/img/hydroguard_logo.png" width="50px" height="62px" style="margin-right: 10px;">
       <span class="brand-text font-weight-bold">Hydro Guard</span>
   </div>
   <!-- /.login-logo -->
