@@ -8,7 +8,7 @@
     ?>
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Membasmi Hama Tanaman</h1>
+        <h1>Monitoring Hama pada Tanaman</h1>
       </div>
     </div>
   </div><!-- /.container-fluid -->
@@ -28,23 +28,6 @@ $execQuery = mysqli_query($conn, $query)
         <div class="card">
           <div class="card-body">
             <div class="row">
-
-              <div class="col-12 mb-5">
-                <div class="row">
-                  <div class="col-12 d-flex justify-content-center">
-                    <h4 class="fw-600">Semprot Pestisida</span>
-                  </div>
-                  <div class="col-12 mt-3 mb-2 d-flex justify-content-center" style="height:150px">
-                    <img id="insecticideGif" src="dist/gif/insecticide.gif" alt="insecticide" hidden>
-                    <img id="insecticidePng" src="dist/img/insecticide.png" alt="insecticide" style="height: 70%">
-                  </div>
-                  <div class="col-12 d-flex justify-content-center">
-                    <button id="buttonPesticide" type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">
-                      <div class="handle"></div>
-                    </button>
-                  </div>
-                </div>
-              </div>
 
               <div class="col-12">
                 <div class="card">

@@ -73,7 +73,7 @@
               <div class="col-6">
                 <div class="row">
                   <div class="col-12">
-                    <h4>PH</h4>
+                    <h4>pH</h4>
                   </div>
                   <div class="col-12">
                     <span id="latestPH"></span>
