@@ -18,11 +18,11 @@ else{
 	elseif ($_GET['module'] == 'dataSuhu') {
 		include "modules/monitoring/suhu/view.php";
 	}
-	elseif ($_GET['module'] == 'kandunganAir') {
-		include "modules/action/kandunganAir/view.php";
-	}
 	elseif ($_GET['module'] == 'hamaTanaman') {
-		include "modules/action/hamaTanaman/view.php";
+		include "modules/monitoring/hamaTanaman/view.php";
+	}
+	elseif ($_GET['module'] == 'action') {
+		include "modules/action/view.php";
 	}
 	elseif ($_GET['module'] == 'config') {
 		include "modules/config/view.php";

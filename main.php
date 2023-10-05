@@ -31,7 +31,7 @@
   <aside class="main-sidebar sidebar-dark-white elevation-4" style="background-color: #014625e2">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-      <img src="dist/img/machine.png" width="50px" height="50px" style="margin-right: 10px;margin-left: 10px;">
+      <img src="dist/img/hydroguard_logo.png" width="40px" height="48px" style="margin-right: 10px;margin-left: 10px;">
       <span class="brand-text font-weight-bold">Hydro Guard</span>
     </a>
 
@@ -46,7 +46,7 @@
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper" style="background-color: #EDEEEE">
     
     <!-- /.content-header -->
 

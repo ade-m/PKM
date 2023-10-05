@@ -60,10 +60,23 @@ if ($hak_akses == 'Super Admin') {
               <p>Data pH</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="?module=hamaTanaman" class="nav-link <?php echo isPageActive('hamaTanaman') ? 'active' : ''; ?>">
+              <i class="nav-icon fa-solid fa-bug"></i>
+              <p>Hama Tanaman</p>
+            </a>
+          </li>
         </ul>
       </li>
-
       <li class="nav-item">
+        <a href="?module=action" class="nav-link <?php echo isPageActive('action') ? 'active' : ''; ?>">
+          <i class="nav-icon fa-regular fa-circle-dot"></i>
+          <p>
+            Action
+          </p>
+        </a>
+      </li>
+      <!-- <li class="nav-item">
         <a href="javascript:void(0)" class="nav-link <?php echo isPageActive('action') ? 'active' : ''; ?>">
           <i class="nav-icon fa-regular fa-circle-dot"></i>
           <p>
@@ -85,7 +98,7 @@ if ($hak_akses == 'Super Admin') {
             </a>
           </li>
         </ul>
-      </li>
+      </li> -->
       <li class="nav-item">
         <a href="?module=config" class="nav-link <?php echo isPageActive('config') ? 'active' : ''; ?>">
           <i class="nav-icon fas fa-tools"></i>

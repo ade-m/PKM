@@ -8,7 +8,7 @@
     ?>
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Mengatur Kandungan Air</h1>
+        <h1>Action</h1>
       </div>
     </div>
   </div><!-- /.container-fluid -->
@@ -24,10 +24,62 @@ $execQuery = mysqli_query($conn, $query)
 <section class="content">
   <div class="container-fluid">
     <div class="row">
+      <!-- card pestisida -->
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <div class="col-12 mb-5">
+              <div class="row">
+                <div class="col-12 d-flex justify-content-center">
+                  <h4 class="fw-600">Semprot Pestisida</span>
+                </div>
+                <div class="col-12 mb-2 d-flex justify-content-center" style="height:150px">
+                  <img id="insecticideGif" src="dist/gif/insecticide.gif" alt="insecticide" hidden>
+                  <img id="insecticidePng" src="dist/img/insecticide.png" alt="insecticide" class="mt-4" style="height: 70%">
+                </div>
+                <div class="col-12 d-flex justify-content-center">
+                  <button id="buttonPesticide" type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <div class="handle"></div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- card fan -->
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <div class="col-12 mb-5">
+              <div class="row">
+                <div class="col-12 d-flex justify-content-center">
+                  <h4 class="fw-600">Nyalakan Kipas</span>
+                </div>
+                <div class="col-12 mb-2 d-flex justify-content-center" style="height:150px">
+                  <img id="fanGif" src="dist/gif/fan.gif" alt="fan" hidden>
+                  <img id="fanPng" src="dist/img/fan.png" alt="fan" class="mt-4" style="height: 71%">
+                </div>
+                <div class="col-12 d-flex justify-content-center">
+                  <button id="buttonFan" type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <div class="handle"></div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- card kandungan air -->
       <div class="col-12">
         <div class="card">
           <div class="card-body">
             <div class="row">
+              <div class="col-12 text-center mb-4">
+                <h4 class="fw-600">Atur Kandungan Air</h4>
+              </div>
 
               <div class="col-3">
                 <div class="row">
@@ -39,10 +91,10 @@ $execQuery = mysqli_query($conn, $query)
                       <div class="handle"></div>
                     </button>
                   </div>
-                  <div class="col-12 mt-20 d-flex justify-content-center">
+                  <div class="col-12 mt-4 d-flex justify-content-center">
                     <img id="" width = "100px" height="100px" src="dist/img/water.png" alt="tap">
                   </div>
-                  <div class="col-12 mt-3 d-flex justify-content-center" style="height:150px">
+                  <div class="col-12 mt-3 d-flex justify-content-end" style="height:150px; padding-right: 2.1rem">
                     <img id="waterDrop1" src="dist/gif/waterFlow.gif" alt="water flow" hidden>
                   </div>
                 </div>
@@ -58,10 +110,10 @@ $execQuery = mysqli_query($conn, $query)
                       <div class="handle"></div>
                     </button>
                   </div>
-                  <div class="col-12 mt-10 d-flex justify-content-center">
+                  <div class="col-12 mt-4 d-flex justify-content-center">
                     <img id="" width = "100px" height="100px" src="dist/img/water.png" alt="tap">
                   </div>
-                  <div class="col-12 mt-3 d-flex justify-content-center" style="height:150px">
+                  <div class="col-12 mt-3 d-flex justify-content-end" style="height:150px; padding-right: 1.8rem">
                     <img id="waterDrop2" src="dist/gif/waterFlow.gif" alt="water flow" hidden>
                   </div>
                 </div>
@@ -77,10 +129,10 @@ $execQuery = mysqli_query($conn, $query)
                       <div class="handle"></div>
                     </button>
                   </div>
-                  <div class="col-12 mt-20 d-flex justify-content-center">
+                  <div class="col-12 mt-4 d-flex justify-content-center">
                     <img id="" width = "100px" height="100px" src="dist/img/water.png" alt="tap">
                   </div>
-                  <div class="col-12 mt-3 d-flex justify-content-center" style="height:150px">
+                  <div class="col-12 mt-3 d-flex justify-content-end" style="height:150px; padding-right: 2.1rem">
                     <img id="waterDrop3" src="dist/gif/waterFlow.gif" alt="water flow" hidden>
                   </div>
                 </div>
@@ -96,10 +148,10 @@ $execQuery = mysqli_query($conn, $query)
                       <div class="handle"></div>
                     </button>
                   </div>
-                  <div class="col-12 mt-20 d-flex justify-content-center">
+                  <div class="col-12 mt-4 d-flex justify-content-center">
                     <img id="" width = "100px" height="100px" src="dist/img/water.png" alt="tap">
                   </div>
-                  <div class="col-12 mt-3 d-flex justify-content-center" style="height:150px">
+                  <div class="col-12 mt-3 d-flex justify-content-end" style="height:150px; padding-right: 2rem">
                     <img id="waterDrop4" src="dist/gif/waterFlow.gif" alt="water flow" hidden>
                   </div>
                 </div>
@@ -195,11 +247,42 @@ $execQuery = mysqli_query($conn, $query)
 </section>
 
 <script>
+  let buttonPesticide = false;
+  // button pesticide
+  $('#buttonPesticide').click(function() {
+    buttonPesticide = !buttonPesticide;
+    //On
+    if (buttonPesticide) {
+      $('#insecticidePng').attr("hidden", true);
+      $('#insecticideGif').attr("hidden", false);
+    }
+    //Off
+    else {
+      $('#insecticidePng').attr("hidden", false);
+      $('#insecticideGif').attr("hidden", true);
+    }
+  })
+
+  let buttonFan = false;
+  // button pesticide
+  $('#buttonFan').click(function() {
+    buttonFan = !buttonFan;
+    //On
+    if (buttonFan) {
+      $('#fanPng').attr("hidden", true);
+      $('#fanGif').attr("hidden", false);
+    }
+    //Off
+    else {
+      $('#fanPng').attr("hidden", false);
+      $('#fanGif').attr("hidden", true);
+    }
+  })
+
   let button1 = false;
   let button2 = false;
   let button3 = false;
   let button4 = false;
-
   // button 1
   $('#button1').click(function() {
     button1 = !button1;
