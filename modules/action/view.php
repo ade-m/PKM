@@ -34,11 +34,11 @@ $execQuery = mysqli_query($conn, $query)
                   <h4 class="fw-600">Semprot Pestisida</span>
                 </div>
                 <div class="col-12 mb-2 d-flex justify-content-center" style="height:150px">
-                  <img id="insecticideGif" src="dist/gif/insecticide.gif" alt="insecticide" hidden>
-                  <img id="insecticidePng" src="dist/img/insecticide.png" alt="insecticide" class="mt-4" style="height: 70%">
+                  <img id="sprinklerGif" src="dist/gif/sprinkler.gif" alt="sprinkler" hidden>
+                  <img id="sprinklerPng" src="dist/img/sprinkler.png" alt="sprinkler" class="mt-4" style="height: 70%">
                 </div>
                 <div class="col-12 d-flex justify-content-center">
-                  <button id="buttonPesticide" type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">
+                  <button id="buttonSprinkler" type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">
                     <div class="handle"></div>
                   </button>
                 </div>
@@ -55,7 +55,7 @@ $execQuery = mysqli_query($conn, $query)
             <div class="col-12 mb-5">
               <div class="row">
                 <div class="col-12 d-flex justify-content-center">
-                  <h4 class="fw-600">Nyalakan Kipas</span>
+                  <h4 class="fw-600">Exhaust Fan</span>
                 </div>
                 <div class="col-12 mb-2 d-flex justify-content-center" style="height:150px">
                   <img id="fanGif" src="dist/gif/fan.gif" alt="fan" hidden>
@@ -247,19 +247,19 @@ $execQuery = mysqli_query($conn, $query)
 </section>
 
 <script>
-  let buttonPesticide = false;
+  let buttonSprinkler = false;
   // button pesticide
-  $('#buttonPesticide').click(function() {
-    buttonPesticide = !buttonPesticide;
+  $('#buttonSprinkler').click(function() {
+    buttonSprinkler = !buttonSprinkler;
     //On
-    if (buttonPesticide) {
-      $('#insecticidePng').attr("hidden", true);
-      $('#insecticideGif').attr("hidden", false);
+    if (buttonSprinkler) {
+      $('#sprinklerPng').attr("hidden", true);
+      $('#sprinklerGif').attr("hidden", false);
     }
     //Off
     else {
-      $('#insecticidePng').attr("hidden", false);
-      $('#insecticideGif').attr("hidden", true);
+      $('#sprinklerPng').attr("hidden", false);
+      $('#sprinklerGif').attr("hidden", true);
     }
   })
 

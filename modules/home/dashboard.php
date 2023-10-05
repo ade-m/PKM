@@ -115,7 +115,7 @@
  
       <div class="col-lg-12">
         <div class="row">
-          <div class="col-9">
+          <div class="col-md-9">
             <div class="card">
               <div class="card-body">
                 <div class="tab-content p-0">
@@ -139,7 +139,7 @@
               </div>
             </div>
           </div>
-          <div class="col-3">
+          <div class="col-md-6 col-lg-3">
             <div class="row">
               <div class="col-12">
                 <div class="card">
