@@ -13,7 +13,7 @@ const unsigned long updateInterval = 2000; // Update every 10 seconds
 #define DHTTYPE DHT11
 #define TdsSensorPin A8
 #define PhSensorPin A7
-#define SuhuSensorPin A10
+#define SuhuSensorPin 26
 
 #define RELAY1 52
 #define RELAY2 50
@@ -28,6 +28,14 @@ DallasTemperature sensorSuhu(&oneWire);
 float suhu;
 
 
+#define TdsSensorPin A8
+#define VREF 5.0      // analog reference voltage(Volt) of the ADC
+#define SCOUNT  30           // sum of sample point
+int analogBuffer[SCOUNT];    // store the analog value in the array, read from ADC
+int analogBufferTemp[SCOUNT];
+int analogBufferIndex = 0,copyIndex = 0;
+float averageVoltage = 0,tdsValue = 0,temperature = 24.2;
+
 
 // String for receiving commands
 String inString;
@@ -36,14 +44,14 @@ String inString;
 // Sensor objects
 GravityTDS gravityTds;
 DHT dht(DHTPIN, DHTTYPE);
-float humidity, temperature, tds, ph;
+float humidity,  tds, ph;//,temperature;
 unsigned long int avgval;
 int buffer_arr[10], temp;
 String kirim = "";
 
 void setup() {
   // Serial initialization
-  Serial.begin(9600);
+  Serial.begin(115200);
   Serial3.begin(115200);
 
   // Sensor initialization
@@ -62,13 +70,15 @@ void setup() {
   pinMode(RELAY6, OUTPUT);
 
   // TDS sensor setup
-  gravityTds.setPin(TdsSensorPin);
-  gravityTds.setAref(5.0); // Reference voltage on ADC, default 5.0V on Arduino UNO
-  gravityTds.setAdcRange(1024); // 1024 for 10-bit ADC; 4096 for 12-bit ADC
-  gravityTds.begin(); // Initialization
+ gravityTds.setPin(TdsSensorPin);
+ gravityTds.setAref(5.0); // Reference voltage on ADC, default 5.0V on Arduino UNO
+ gravityTds.setAdcRange(1024); // 1024 for 10-bit ADC; 4096 for 12-bit ADC
+ gravityTds.begin(); // Initialization
+
+ // setupTDS();
 }
 
-void drawDataScreen(float phValue, float tdsValue, float temperatureValue, float humidityValue) {
+void drawDataScreen(float phValue, float tdsValue, float temperatureValue, float humidityValue , float suhuValue) {
   myGLCD.clrScr();
   int buf[478];
   int x, x2;
@@ -92,6 +102,10 @@ void drawDataScreen(float phValue, float tdsValue, float temperatureValue, float
 
   // Display Humidity
   myGLCD.print("Humidity: " + String(humidityValue) + " %", 15, 230);
+
+  // Display Air
+  myGLCD.print("Suhu Air: " + String(suhuValue) + " C", 15, 280);
+
 
   // Display the text "Hydroguard" below the image
   myGLCD.setColor(0, 255, 0); // Text color for "Hydroguard"
@@ -147,37 +161,46 @@ void loop() {
   if (currentMillis - lastUpdate >= updateInterval) {
     lastUpdate = currentMillis;
 
-  // Read sensor data
-  humidity = dht.readHumidity();
-  temperature = dht.readTemperature();
-  sensorSuhu.requestTemperatures();
-  suhu = sensorSuhu.getTempCByIndex(0);
+    // Read sensor data
+    humidity = dht.readHumidity();
+    delay(100);
+    temperature = dht.readTemperature();
+    delay(100);
+    sensorSuhu.requestTemperatures();
+    delay(100);
+    suhu = sensorSuhu.getTempCByIndex(0);
+    delay(100);
 
-  // Read pH sensor data
-  for (int i = 0; i < 10; i++) {
-    buffer_arr[i] = analogRead(PhSensorPin);
-    delay(10);
-  }
-  for (int i = 0; i < 9; i++) {
-    for (int j = i + 1; j < 10; j++) {
-      if (buffer_arr[i] > buffer_arr[j]) {
-        temp = buffer_arr[i];
-        buffer_arr[i] = buffer_arr[j];
-        buffer_arr[j] = temp;
+    // Read pH sensor data
+    for (int i = 0; i < 10; i++) {
+      buffer_arr[i] = analogRead(PhSensorPin);
+      delay(10);
+    }
+    for (int i = 0; i < 9; i++) {
+      for (int j = i + 1; j < 10; j++) {
+        if (buffer_arr[i] > buffer_arr[j]) {
+          temp = buffer_arr[i];
+          buffer_arr[i] = buffer_arr[j];
+          buffer_arr[j] = temp;
+        }
       }
     }
-  }
-  avgval = 0;
-  for (int i = 2; i < 8; i++)
-    avgval += buffer_arr[i];
+    avgval = 0;
+    for (int i = 2; i < 8; i++)
+      avgval += buffer_arr[i];
 
-  float volt = (float)avgval * 5.0 / 1024 / 6;
-  ph = -6.18 * volt + 26.10;
+    float volt = (float)avgval * 5.0 / 1024 / 6;
+    ph = -6.18 * volt + 27.60;
 
-  // Read TDS sensor data
-  gravityTds.setTemperature(suhu);
-  gravityTds.update();
-  tds = gravityTds.getTdsValue();
+    //end PH
+
+    // Read TDS sensor data
+    //loopTDS();  
+    delay(100);
+   gravityTds.setTemperature(suhu);
+   gravityTds.update();
+   tds = gravityTds.getTdsValue();
+   tds -= (0.35*tds); // error rate 30%
   
 }
   // Prepare data for transmission
@@ -186,6 +209,7 @@ void loop() {
   kirim += ";";
   kirim += temperature;
   kirim += ";";
+  //tds =tdsValue; //okde terbaru sesuai dokumentasi
   kirim += tds;
   kirim += ";";
   kirim += ph;
@@ -262,9 +286,69 @@ void loop() {
     }
   }
   // Draw the updated data on the screen
-  drawDataScreen(ph, tds, temperature, humidity);
+  drawDataScreen(ph, tds, temperature, humidity, suhu);
   
   delay(5000);
 
 
+}
+
+void setupTDS()
+{
+    Serial.begin(115200);
+    pinMode(TdsSensorPin,INPUT);
+}
+
+void loopTDS()
+{
+   static unsigned long analogSampleTimepoint = millis();
+   if(millis()-analogSampleTimepoint > 40U)     //every 40 milliseconds,read the analog value from the ADC
+   {
+     analogSampleTimepoint = millis();
+     analogBuffer[analogBufferIndex] = analogRead(TdsSensorPin);    //read the analog value and store into the buffer
+     analogBufferIndex++;
+     if(analogBufferIndex == SCOUNT) 
+         analogBufferIndex = 0;
+   }   
+   static unsigned long printTimepoint = millis();
+   if(millis()-printTimepoint > 800U)
+   {
+      printTimepoint = millis();
+      for(copyIndex=0;copyIndex<SCOUNT;copyIndex++)
+        analogBufferTemp[copyIndex]= analogBuffer[copyIndex];
+      averageVoltage = getMedianNum(analogBufferTemp,SCOUNT) * (float)VREF / 1024.0; // read the analog value more stable by the median filtering algorithm, and convert to voltage value
+      float compensationCoefficient=1.0+0.02*(temperature-25.0);    //temperature compensation formula: fFinalResult(25^C) = fFinalResult(current)/(1.0+0.02*(fTP-25.0));
+      float compensationVolatge=averageVoltage/compensationCoefficient;  //temperature compensation
+      tdsValue=(133.42*compensationVolatge*compensationVolatge*compensationVolatge - 255.86*compensationVolatge*compensationVolatge + 857.39*compensationVolatge)*0.5; //convert voltage value to tds value
+      //Serial.print("voltage:");
+      //Serial.print(averageVoltage,2);
+      //Serial.print("V   ");
+      Serial.print("TDS Value:");
+      Serial.print(tdsValue,0);
+      Serial.println("ppm");
+   }
+}
+int getMedianNum(int bArray[], int iFilterLen) 
+{
+      int bTab[iFilterLen];
+      for (byte i = 0; i<iFilterLen; i++)
+      bTab[i] = bArray[i];
+      int i, j, bTemp;
+      for (j = 0; j < iFilterLen - 1; j++) 
+      {
+      for (i = 0; i < iFilterLen - j - 1; i++) 
+          {
+        if (bTab[i] > bTab[i + 1]) 
+            {
+        bTemp = bTab[i];
+            bTab[i] = bTab[i + 1];
+        bTab[i + 1] = bTemp;
+         }
+      }
+      }
+      if ((iFilterLen & 1) > 0)
+    bTemp = bTab[(iFilterLen - 1) / 2];
+      else
+    bTemp = (bTab[iFilterLen / 2] + bTab[iFilterLen / 2 - 1]) / 2;
+      return bTemp;
 }
