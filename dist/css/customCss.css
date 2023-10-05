@@ -6,8 +6,15 @@
     font-size: large;
 }
 
-.water-tank {
-  border-radius: 15px 15px 50px 50px;
+.fs-dashboard {
+  font-size: 1.4rem;
+}
+
+.circle-icon {
+  display: inline-block;
+  border-radius: 100%;
+  font-size: 2.3em;
+  color: white;
 }
 
 .water-flow {
@@ -229,11 +236,4 @@
 .nav-sidebar .menu-is-opening > .nav-link i.right {
   -webkit-transform: rotate(90deg)!important;
   transform: rotate(90deg)!important;
-}
-
-.circle-icon {
-  display: inline-block;
-  border-radius: 100%;
-  font-size: 2.5em;
-  color: white;
 }

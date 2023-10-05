@@ -27,7 +27,7 @@
               <div class="col-6">
                 <div class="row">
                   <div class="col-12">
-                    <h4>Suhu</h4>
+                    <span class="fs-dashboard">Suhu</span>
                   </div>
                   <div class="col-12">
                     <span id="latestTemp"></span>&nbsp;°C
@@ -50,7 +50,7 @@
               <div class="col-7">
                 <div class="row">
                   <div class="col-12">
-                    <h4>Kelembapan</h4>
+                    <span class="fs-dashboard">Kelembapan</span>
                   </div>
                   <div class="col-12">
                     <span id="latestHumid"></span>&nbsp; RH
@@ -73,7 +73,7 @@
               <div class="col-6">
                 <div class="row">
                   <div class="col-12">
-                    <h4>pH</h4>
+                    <span class="fs-dashboard">pH</span>
                   </div>
                   <div class="col-12">
                     <span id="latestPH"></span>
@@ -96,7 +96,7 @@
               <div class="col-6">
                 <div class="row">
                   <div class="col-12">
-                    <h4>Nutrisi</h4>
+                    <span class="fs-dashboard">Nutrisi</span>
                   </div>
                   <div class="col-12 d-flex align-items-center">
                     <img src="dist/img/warning.png" class="img-fluid mr-1" style='height: 1.2rem'></img>
@@ -113,9 +113,9 @@
         </div>
       </div>
  
-      <div class="col-lg-12">
+      <div class="col-12">
         <div class="row">
-          <div class="col-md-9">
+          <div class="col-md-12 col-lg-9">
             <div class="card">
               <div class="card-body">
                 <div class="tab-content p-0">
@@ -139,9 +139,9 @@
               </div>
             </div>
           </div>
-          <div class="col-md-6 col-lg-3">
+          <div class="col-md-12 col-lg-3">
             <div class="row">
-              <div class="col-12">
+              <div class="col-md-6 col-lg-12">
                 <div class="card">
                   <div class="card-body">
                     <div class="row">
@@ -207,7 +207,7 @@
                   </div>
                 </div>  
               </div>
-              <div class="col-12">
+              <div class="col-md-6 col-lg-12">
                 <div class="card">
                   <div class="card-body">
                     <div class="row text-center">
