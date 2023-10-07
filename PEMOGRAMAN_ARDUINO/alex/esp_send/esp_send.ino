@@ -3,8 +3,8 @@
 #include <ESP8266WebServer.h>
 #include <ESP8266HTTPClient.h>
 
-const char *ssid = "WIFI_IT";
-const char *password = "ascend1234";
+const char *ssid = "Syifa Hidroponik";
+const char *password = "syifa2011";
 
 float humidity, temperature, tds, ph;
 
@@ -83,7 +83,7 @@ void kirimDanBacaDataKeServer() {
              "&tds=" + String(tds) +
              "&ph=" + String(ph);
 
-  http.begin(client, "http://192.168.1.62/PKM/api/server.php");
+  http.begin(client, "http://192.168.1.11/PKM/PKM/api/server.php");
   http.addHeader("Content-Type", "application/x-www-form-urlencoded");
 
   int httpCode1 = http.POST(postData);
@@ -92,7 +92,7 @@ void kirimDanBacaDataKeServer() {
   Serial.println(httpCode1);
 
   // Baca data dari server
-  http.begin(client, "http://192.168.1.62/PKM/api/readData.php");
+  http.begin(client, "http://192.168.1.11/PKM/PKM/api/readData.php");
   http.addHeader("Content-Type", "application/x-www-form-urlencoded");
 
   int httpCode2 = http.POST("toggle_Relay=1");

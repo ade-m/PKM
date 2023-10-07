@@ -51,7 +51,7 @@ String kirim = "";
 
 void setup() {
   // Serial initialization
-  Serial.begin(115200);
+  Serial.begin(9600);
   Serial3.begin(115200);
 
   // Sensor initialization
