@@ -12,7 +12,7 @@ if ($conn->connect_error) {
 }
 
 // Fetch data from the database
-$sql = "SELECT * FROM log ORDER BY date DESC LIMIT 10"; // Adjust your query accordingly
+$sql = "SELECT * FROM log ORDER BY date DESC"; // Adjust your query accordingly
 $result = $conn->query($sql);
 
 $data = array();
@@ -21,18 +21,11 @@ while ($row = $result->fetch_assoc()) {
         'id' => $row['id'],
         'date' => $row['date'],
         'temperature' => $row['temperature'],
-        'humidity' => $row['humidity'],
-        'ph' => $row['ph'],
-        'tds' => $row['tds'],
     );
 }
 
-// Calculate the minimum and maximum values
-$minValue = min(array_column($data, 'temperature'));
-$maxValue = max(array_column($data, 'temperature'));
-
 // Convert the data to JSON format
-echo json_encode(array_reverse($data));
+echo json_encode($data);
 
 $conn->close();
 ?>

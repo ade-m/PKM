@@ -34,13 +34,8 @@ $execQuery = mysqli_query($conn, $query)
                   <h4 class="fw-600">Semprot Pestisida</span>
                 </div>
                 <div class="col-12 mb-2 d-flex justify-content-center" style="height:150px">
-                  <img id="sprinklerGif1" src="dist/gif/sprinkler.gif" alt="sprinkler" hidden>
-                  <img id="sprinklerGif2" src="dist/gif/sprinkler.gif" alt="sprinkler" hidden>
-                  <img id="sprinklerGif3" src="dist/gif/sprinkler.gif" alt="sprinkler" hidden>
-                  
-                  <img id="sprinklerPng1" src="dist/img/sprinkler.png" alt="sprinkler" class="mt-4" style="height: 70%">
-                  <img id="sprinklerPng2" src="dist/img/sprinkler.png" alt="sprinkler" class="mt-4 mx-5" style="height: 70%">
-                  <img id="sprinklerPng3" src="dist/img/sprinkler.png" alt="sprinkler" class="mt-4" style="height: 70%">
+                  <img id="sprinklerGif" src="dist/gif/sprinkler.gif" alt="sprinkler" hidden>
+                  <img id="sprinklerPng" src="dist/img/sprinkler.png" alt="sprinkler" class="mt-4" style="height: 70%">
                 </div>
                 <div class="col-12 d-flex justify-content-center">
                   <button id="buttonSprinkler" type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">
@@ -258,21 +253,13 @@ $execQuery = mysqli_query($conn, $query)
     buttonSprinkler = !buttonSprinkler;
     //On
     if (buttonSprinkler) {
-      $('#sprinklerPng1').attr("hidden", true);
-      $('#sprinklerPng2').attr("hidden", true);
-      $('#sprinklerPng3').attr("hidden", true);
-      $('#sprinklerGif1').attr("hidden", false);
-      $('#sprinklerGif2').attr("hidden", false);
-      $('#sprinklerGif3').attr("hidden", false);
+      $('#sprinklerPng').attr("hidden", true);
+      $('#sprinklerGif').attr("hidden", false);
     }
     //Off
     else {
-      $('#sprinklerPng1').attr("hidden", false);
-      $('#sprinklerPng2').attr("hidden", false);
-      $('#sprinklerPng3').attr("hidden", false);
-      $('#sprinklerGif1').attr("hidden", true);
-      $('#sprinklerGif2').attr("hidden", true);
-      $('#sprinklerGif3').attr("hidden", true);
+      $('#sprinklerPng').attr("hidden", false);
+      $('#sprinklerGif').attr("hidden", true);
     }
   })
 

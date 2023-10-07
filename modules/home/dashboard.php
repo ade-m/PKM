@@ -99,7 +99,7 @@
                     <span class="fs-dashboard">Nutrisi</span>
                   </div>
                   <div class="col-12 d-flex align-items-center">
-                    <img src="dist/img/warning.png" class="img-fluid mr-1" style='height: 1.2rem'></img>
+                    <img id="tdsWarning" src="dist/img/warning.png" class="img-fluid mr-1" style='height: 1.2rem' hidden></img>
                     <span id="latestTds"></span>&nbsp; PPM
                   </div>
                 </div>
