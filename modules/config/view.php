@@ -8,7 +8,7 @@
     ?>
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Setup</h1>
+        <h1>Setting</h1>
       </div>
     </div>
   </div><!-- /.container-fluid -->
