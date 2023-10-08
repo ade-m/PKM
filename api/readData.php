@@ -44,12 +44,6 @@ if (isset($_POST['toggle_Relay'])) {
 	else{
 		echo "Relay5_is_on";
 	}
-	if($row['status5'] == 0){
-		echo "Relay5_is_of";
-	}
-	else{
-		echo "Relay5_is_on";
-	}
 	if($row['status6'] == 0){
 		echo "Relay6_is_of";
 	}
