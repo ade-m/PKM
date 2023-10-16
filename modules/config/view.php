@@ -29,45 +29,65 @@
               <div class="card-body">
                 <div class="tab-content p-0">
                   <div class="row">
-                    <div class="col-sm-5 col-md-3">
-                      <div class="form-group">
-                        <label>Durasi Insert Data</label>
-                        <input type="insertData" class="form-control">
+                    <div class="col-sm-5 col-md-4">
+                      <div class="row form-group">
+                        <div class="col-12">
+                          <label>Durasi Insert Data</label>
+                        </div>
+                        <div class="col-7 d-flex align-items-center">
+                          <input type="number" class="form-control mr-3" value="5"> Detik
+                        </div>
                       </div>
                     </div>
                     <div class="col-1">
                       
                     </div>
-                    <div class="col-sm-5 col-md-3">
-                      <div class="form-group">
-                        <label>Durasi Pembukaan Pompa</label>
-                        <input type="insertData" class="form-control">
+                    <div class="col-sm-5 col-md-4">
+                      <div class="row form-group">
+                        <div class="col-12">
+                          <label>Durasi Pembukaan Pompa</label>
+                        </div>
+                        <div class="col-7 d-flex align-items-center">
+                          <input type="number" class="form-control mr-3" value="1"> Menit
+                        </div>
                       </div>
                     </div>
                   </div>
                   
                   <div class="row">
-                    <div class="col-sm-5 col-md-3">
-                      <div class="form-group">
-                        <label>Durasi Pembukaan Ph</label>
-                        <input type="insertData" class="form-control">
+                    <div class="col-sm-5 col-md-4">
+                      <div class="row form-group">
+                        <div class="col-12">
+                          <label>Durasi Pembukaan pH</label>
+                        </div>
+                        <div class="col-7 d-flex align-items-center">
+                          <input type="number" class="form-control mr-3" value="10"> Menit
+                        </div>
                       </div>
                     </div>
                     <div class="col-1">
                       
                     </div>
-                    <div class="col-sm-5 col-md-3">
-                      <div class="form-group">
-                        <label>Durasi Pembukaan Exhaust Fan</label>
-                        <input type="insertData" class="form-control">
+                    <div class="col-sm-5 col-md-4">
+                      <div class="row form-group">
+                        <div class="col-12">
+                          <label>Durasi Pembukaan Exhaust Fan</label>
+                        </div>
+                        <div class="col-7 d-flex align-items-center">
+                          <input type="number" class="form-control mr-3" value="30"> Menit
+                        </div>
                       </div>
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-sm-5 col-md-3">
-                      <div class="form-group">
-                        <label>Durasi Pembukaan Nutrisi</label>
-                        <input type="insertData" class="form-control">
+                    <div class="col-sm-5 col-md-4">
+                      <div class="row form-group">
+                        <div class="col-12">
+                          <label>Durasi Pembukaan Nutrisi</label>
+                        </div>
+                        <div class="col-7 d-flex align-items-center">
+                          <input type="number" class="form-control mr-3" value="10"> Menit
+                        </div>
                       </div>
                     </div>
                   </div>
