@@ -110,7 +110,7 @@ $(document).ready(function() {
     "order": [
       [0, 'desc']
     ]
-  }).buttons().container().appendTo('#phTable_wrapper .col-md-6:eq(0)');
+  }).buttons().container().appendTo('#tempTable_wrapper .col-md-6:eq(0)');
 
   // Function to fetch data from the server using AJAX
   function fetchData() {
