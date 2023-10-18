@@ -24,12 +24,12 @@
     <section class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-12">
+          <div class="col-md-9 col-lg-7">
             <div class="card">
               <div class="card-body">
                 <div class="tab-content p-0">
                   <div class="row">
-                    <div class="col-sm-5 col-md-4">
+                    <div class="col-md-6">
                       <div class="row form-group">
                         <div class="col-12">
                           <label>Durasi Insert Data</label>
@@ -39,10 +39,8 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-1">
-                      
-                    </div>
-                    <div class="col-sm-5 col-md-4">
+                  
+                    <div class="col-md-6">
                       <div class="row form-group">
                         <div class="col-12">
                           <label>Durasi Pembukaan Pompa</label>
@@ -55,7 +53,7 @@
                   </div>
                   
                   <div class="row">
-                    <div class="col-sm-5 col-md-4">
+                    <div class="col-md-6">
                       <div class="row form-group">
                         <div class="col-12">
                           <label>Durasi Pembukaan pH</label>
@@ -65,10 +63,8 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-1">
-                      
-                    </div>
-                    <div class="col-sm-5 col-md-4">
+   
+                    <div class="col-md-6">
                       <div class="row form-group">
                         <div class="col-12">
                           <label>Durasi Pembukaan Exhaust Fan</label>
@@ -79,8 +75,9 @@
                       </div>
                     </div>
                   </div>
+
                   <div class="row">
-                    <div class="col-sm-5 col-md-4">
+                    <div class="col-md-6">
                       <div class="row form-group">
                         <div class="col-12">
                           <label>Durasi Pembukaan Nutrisi</label>
@@ -89,6 +86,10 @@
                           <input type="number" class="form-control mr-3" value="10"> Menit
                         </div>
                       </div>
+                    </div>
+
+                    <div class="d-flex align-items-center col-md-6 mt-3">
+                      <button type="button" class="btn btn-success">Simpan</button>
                     </div>
                   </div>
                 </div>
