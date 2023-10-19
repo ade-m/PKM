@@ -257,7 +257,7 @@ include 'function/alertfunc.php';
                 fill: false,
               },
               {
-                label: 'Tds',
+                label: 'Nutrisi',
                 data: [],
                 borderColor: 'rgba(4, 219, 26)',
                 borderWidth: 1,

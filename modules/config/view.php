@@ -32,7 +32,7 @@
                     <div class="col-md-6">
                       <div class="row form-group">
                         <div class="col-12">
-                          <label>Durasi Insert Data</label>
+                          <label>Durasi Pengambilan Data</label>
                         </div>
                         <div class="col-7 d-flex align-items-center">
                           <input type="number" class="form-control mr-3" value="5"> Detik
@@ -43,7 +43,7 @@
                     <div class="col-md-6">
                       <div class="row form-group">
                         <div class="col-12">
-                          <label>Durasi Pembukaan Pompa</label>
+                          <label>Durasi Pembukaan Pestisida</label>
                         </div>
                         <div class="col-7 d-flex align-items-center">
                           <input type="number" class="form-control mr-3" value="1"> Menit
@@ -56,7 +56,7 @@
                     <div class="col-md-6">
                       <div class="row form-group">
                         <div class="col-12">
-                          <label>Durasi Pembukaan pH</label>
+                          <label>Durasi Pembukaan Katup pH</label>
                         </div>
                         <div class="col-7 d-flex align-items-center">
                           <input type="number" class="form-control mr-3" value="10"> Menit
@@ -80,7 +80,7 @@
                     <div class="col-md-6">
                       <div class="row form-group">
                         <div class="col-12">
-                          <label>Durasi Pembukaan Nutrisi</label>
+                          <label>Durasi Pembukaan Katup Nutrisi</label>
                         </div>
                         <div class="col-7 d-flex align-items-center">
                           <input type="number" class="form-control mr-3" value="10"> Menit
