@@ -38,7 +38,7 @@ $execQuery = mysqli_query($conn, $query)
                   <img id="sprinklerPng" src="dist/img/sprinkler.png" alt="sprinkler" class="mt-4" style="height: 70%">
                 </div>
                 <div class="col-12 d-flex justify-content-center">
-                  <button id="buttonSprinkler" type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">
+                  <button id="buttonPompa" data-endpoint="pompa" type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">
                     <div class="handle"></div>
                   </button>
                 </div>
@@ -62,7 +62,7 @@ $execQuery = mysqli_query($conn, $query)
                   <img id="fanPng" src="dist/img/fan.png" alt="fan" class="mt-4" style="height: 71%">
                 </div>
                 <div class="col-12 d-flex justify-content-center">
-                  <button id="buttonFan" type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">
+                  <button id="buttonExhaustFan" data-endpoint="exhaustFan" type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">
                     <div class="handle"></div>
                   </button>
                 </div>
@@ -87,7 +87,7 @@ $execQuery = mysqli_query($conn, $query)
                     <span class="fw-600 fs-lg">pH Up</span>
                   </div>
                   <div class="col-12 d-flex justify-content-center">
-                    <button id="button1" type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <button id="buttonPhUp" data-endpoint="phUp" type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">
                       <div class="handle"></div>
                     </button>
                   </div>
@@ -106,7 +106,7 @@ $execQuery = mysqli_query($conn, $query)
                     <span class="fw-600 fs-lg">pH Down</span>
                   </div>
                   <div class="col-12 d-flex justify-content-center">
-                    <button id="button2" type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <button id="buttonPhDown" data-endpoint="phDown" type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">
                       <div class="handle"></div>
                     </button>
                   </div>
@@ -125,7 +125,7 @@ $execQuery = mysqli_query($conn, $query)
                     <span class="fw-600 fs-lg">Nutrisi A</span>
                   </div>
                   <div class="col-12 d-flex justify-content-center">
-                    <button id="button3" type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <button id="buttonNutrisiA" data-endpoint="nutrisiA" type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">
                       <div class="handle"></div>
                     </button>
                   </div>
@@ -144,7 +144,7 @@ $execQuery = mysqli_query($conn, $query)
                     <span class="fw-600 fs-lg">Nutrisi B</span>
                   </div>
                   <div class="col-12 d-flex justify-content-center">
-                    <button id="button4" type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    <button id="buttonNutrisiB" data-endpoint="nutrisiB" type="button" class="btn btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off">
                       <div class="handle"></div>
                     </button>
                   </div>
@@ -167,171 +167,77 @@ $execQuery = mysqli_query($conn, $query)
       </div>
     </div>
     <!-- /.row -->
-    <!-- The Modal -->
-    <div class="modal fade" id="myModal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-
-          <!-- Modal Header -->
-          <div class="modal-header">
-            <h4 class="modal-title">Tambah User</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-
-          <!-- Modal body -->
-          <div class="modal-body">
-            <br>
-            <form action="modules/user/proses.php?act=insert" method="post" enctype="multipart/form-data">
-              <label>Username</label>
-              <input type="text" name="username" placeholder="Username" class="form-control" required>
-              <br>
-              <label>Password</label>
-              <input type="password" name="password" placeholder="Password" class="form-control" required>
-              <br>
-              <label>Nama User</label>
-              <input type="text" name="nama_user" placeholder="User" class="form-control" required>
-              <br>
-              <label>Hak Akses</label>
-              <select class="form-control" name="hakakses" placeholder="Hak Akses" required>
-                <option value="Super Admin">Super Admin</option>
-                <option value="User">User</option>
-              </select>
-              <br>
-              <button type="button" class="btn btn-danger" style="float: left;" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary" name="addUser" style="float: right;">Submit</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div><!-- Modal Close -->
-
-
-    <!-- The Modal -->
-    <div class="modal fade" id="edit<?= $id_supplier; ?>">
-      <div class="modal-dialog">
-        <div class="modal-content">
-
-          <!-- Modal Header -->
-          <div class="modal-header">
-            <h4 class="modal-title">Tambah User</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-
-          <!-- Modal body -->
-          <div class="modal-body">
-            <br>
-            <form action="modules/user/proses.php?act=insert" method="post">
-              <label>Username</label>
-              <input type="text" name="username" placeholder="Username" class="form-control" required>
-              <br>
-              <label>Password</label>
-              <input type="password" name="password" placeholder="Password" class="form-control" required>
-              <br>
-              <label>Nama User</label>
-              <input type="text" name="nama_user" placeholder="User" class="form-control" required>
-              <br>
-              <label>Hak Akses</label>
-              <select class="form-control" name="hakakses" placeholder="Hak Akses" required>
-                <option value="Super Admin">Super Admin</option>
-                <option value="User">User</option>
-              </select>
-              <br>
-              <button type="button" class="btn btn-danger" style="float: left;" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary" name="addUser" style="float: right;">Submit</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div><!-- Modal Close -->
   </div>
 </section>
 
 <script>
-  let buttonSprinkler = false;
-  // button pesticide
-  $('#buttonSprinkler').click(function() {
-    buttonSprinkler = !buttonSprinkler;
-    //On
-    if (buttonSprinkler) {
-      $('#sprinklerPng').attr("hidden", true);
-      $('#sprinklerGif').attr("hidden", false);
-    }
-    //Off
-    else {
-      $('#sprinklerPng').attr("hidden", false);
-      $('#sprinklerGif').attr("hidden", true);
-    }
-  })
+  $(document).ready(function() {
+    function fetchData() {
+      var xhr = new XMLHttpRequest();
 
-  let buttonFan = false;
-  // button pesticide
-  $('#buttonFan').click(function() {
-    buttonFan = !buttonFan;
-    //On
-    if (buttonFan) {
-      $('#fanPng').attr("hidden", true);
-      $('#fanGif').attr("hidden", false);
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          var dataFromDatabase = JSON.parse(xhr.responseText);
+          getDeviceStatus(dataFromDatabase);
+        }
+      };
+      xhr.open('GET', 'api/dashboard/getDeviceStatus.php', true);
+      xhr.send();
     }
-    //Off
-    else {
-      $('#fanPng').attr("hidden", false);
-      $('#fanGif').attr("hidden", true);
-    }
-  })
 
-  let button1 = false;
-  let button2 = false;
-  let button3 = false;
-  let button4 = false;
-  // button 1
-  $('#button1').click(function() {
-    button1 = !button1;
-    //On
-    if (button1) {
-      $('#waterDrop1').attr("hidden", false);
+    function handleStatus(status, buttonId, offImg, onImg) {
+      if (status === '0') {
+        if($(buttonId).prop('ariaPressed') == 'true') {
+          $(buttonId).click();
+        }
+        if (offImg) {
+          $(offImg).attr("hidden", false);
+        }
+        $(onImg).attr("hidden", true);
+      }
+      else {
+        if ($(buttonId).prop('ariaPressed') == 'false') {
+          $(buttonId).click();
+        }
+        if (offImg) {
+          $(offImg).attr('hidden', true);
+        }
+        $(onImg).attr('hidden', false);
+      }
     }
-    //Off
-    else {
-      $('#waterDrop1').attr("hidden", true);
-    }
-  })
 
-  // button 2
-  $('#button2').click(function() {
-    button2 = !button2;
-    //On
-    if (button2) {
-      $('#waterDrop2').attr("hidden", false);
+    function getDeviceStatus(data) {
+      console.log(data)
+      handleStatus(data.pompa, '#buttonPompa', '#sprinklerPng', '#sprinklerGif');
+      handleStatus(data.exhaustFan, '#buttonExhaustFan', '#fanPng', '#fanGif');
+      handleStatus(data.phUp, '#buttonPhUp', null, '#waterDrop1');
+      handleStatus(data.phDown, '#buttonPhDown', null, '#waterDrop2');
+      handleStatus(data.nutrisiA, '#buttonNutrisiA', null, '#waterDrop3');
+      handleStatus(data.nutrisiB, '#buttonNutrisiB', null, '#waterDrop4');
     }
-    //Off
-    else {
-      $('#waterDrop2').attr("hidden", true);
-    }
-  })
 
-  // button 3
-  $('#button3').click(function() {
-    button3 = !button3;
-    //On
-    if (button3) {
-      $('#waterDrop3').attr("hidden", false);
-    }
-    //Off
-    else {
-      $('#waterDrop3').attr("hidden", true);
-    }
-  })
+    $('#buttonPompa, #buttonExhaustFan, #buttonPhUp, #buttonPhDown, #buttonNutrisiA, #buttonNutrisiB').click(function() {
+      const endpoint = $(this).data('endpoint');
+      sendStatusUpdate(endpoint, $(this));
+    });
 
-  // button 4
-  $('#button4').click(function() {
-    button4 = !button4;
-    //On
-    if (button4) {
-      $('#waterDrop4').attr("hidden", false);
+    function sendStatusUpdate(endpoint, button) {
+      const status = button.prop('ariaPressed') == 'false' ? true : false;
+
+      $.ajax({
+        url: 'api/dashboard/updateDeviceStatus.php/' + endpoint,
+        method: 'POST',
+        data: {status: status},
+        success: function(response) {
+          console.log('Berhasil mengupdate database');
+        },
+        error: function(error) {
+          console.error('Error updating database:', error);
+        }
+      })
     }
-    //Off
-    else {
-      $('#waterDrop4').attr("hidden", true);
-    }
+
+    fetchData();
+    setInterval(fetchData, 1000);
   })
 </script>
