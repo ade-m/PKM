@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$dBUsername = "root";
-$dBPassword = "";
+$dBUsername = "bap21si2";
+$dBPassword = "bap21si2";
 $dBName = "arduino";
 $conn = mysqli_connect($servername, $dBUsername, $dBPassword, $dBName);
 if (!$conn) {

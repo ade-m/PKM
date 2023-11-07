@@ -1,5 +1,12 @@
 <?php
-  include "../config/database.php";
+$servername = "localhost";
+$dBUsername = "bap21si2";
+$dBPassword = "bap21si2";
+$dBName = "arduino";
+$conn = mysqli_connect($servername, $dBUsername, $dBPassword, $dBName);
+if (!$conn) {
+	die("Connection failed: ".mysqli_connect_error());
+}
 
   if(!empty($_POST)){
 

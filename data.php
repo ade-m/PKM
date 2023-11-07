@@ -1,8 +1,8 @@
 <?php
 // Connect to the database (replace with your actual credentials)
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "bap21si2";
+$password = "bap21si2";
 $dbname = "arduino";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
